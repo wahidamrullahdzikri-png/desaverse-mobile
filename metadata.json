@@ -1,0 +1,6 @@
+{
+  "name": "DESAVERSE - Misi Desa Mandiri",
+  "description": "Media pembelajaran interaktif berbasis cerita dan game tentang ekonomi sirkular, pengelolaan sampah, ketahanan pangan, dan UMKM untuk siswa SD.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
