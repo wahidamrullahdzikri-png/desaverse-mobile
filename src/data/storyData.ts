@@ -19,7 +19,7 @@ export const STORY_SCENES: Record<string, SceneData> = {
     facilitatorGuide: {
       objective: 'Memperkenalkan judul game dan mempersiapkan siswa di kelas.',
       discussionPrompts: [
-        'Minta siswa duduk rapi dan bersiap petualangan Desa Sukamaju!',
+        'Minta siswa duduk rapi dan bersiap petualangan Desa Sadasari!',
         'Jelaskan bahwa hari ini kita akan mengambil keputusan bersama.'
       ],
       keyTakeaway: 'Pembelajaran kolaboratif dimulai dari kesiapan bersama.'
@@ -46,66 +46,72 @@ export const STORY_SCENES: Record<string, SceneData> = {
 
   'SC-003': {
     id: 'SC-003',
-    title: 'Perkenalan Windah',
+    title: 'Perkenalan Yanti & Dika',
     category: 'story',
     act: 1,
     background: 'village_dirty',
     nextSceneId: 'SC-004',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'happy',
-        text: 'Halo teman-teman semua! Namaku Windah, anak asli Desa Sukamaju! 👋'
+        text: 'Halo teman-teman semua! Namaku Yanti, siswi kelas 5 SD di Desa Sadasari! 👋'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Dika',
+        character: 'dika',
+        expression: 'happy',
+        text: 'Dan aku Dika! Kami berdua siap menjaga desa kami agar tetap bersih dan sehat!'
+      },
+      {
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'surprised',
-        text: 'Wah, senang sekali hari ini kakak-kakak KKN sudah datang ke desa kami!'
+        text: 'Wah, senang sekali hari ini kakak-kakak KKM sudah datang ke desa kami!'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'thinking',
-        text: 'Tapi... sejujurnya, Desa Sukamaju sedang menghadapi masalah besar nih...'
+        text: 'Tapi... sejujurnya, Desa Sadasari sedang menghadapi masalah besar nih...'
       }
     ],
     facilitatorGuide: {
-      objective: 'Memperkenalkan karakter Windah dan membangun keterikatan emosional.',
+      objective: 'Memperkenalkan Yanti dan Dika serta membangun keterikatan emosional.',
       discussionPrompts: [
         'Tanyakan kepada siswa: Siapa yang suka membantu teman?',
-        'Siapkan perhatian siswa untuk menyimak masalah Desa Sukamaju.'
+        'Siapkan perhatian siswa untuk menyimak masalah Desa Sadasari.'
       ],
-      keyTakeaway: 'Pendamping desa (Windah) akan memandu diskusi kelas.'
+      keyTakeaway: 'Duo sahabat Yanti & Dika akan memandu diskusi kelas.'
     }
   },
 
   'SC-004': {
     id: 'SC-004',
-    title: 'Kondisi Desa Sukamaju',
+    title: 'Kondisi Desa Sadasari',
     category: 'story',
     act: 1,
     background: 'village_dirty',
     nextSceneId: 'SC-005',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'sad',
         text: 'Coba lihat sekeliling kita... Dulu desa ini sangat hijau dan bersih.'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'sad',
-        text: 'Tapi sekarang sampah plastik berserakan di jalanan, kebun warga terbengkalai, dan UMKM kekurangan bahan.'
+        text: 'Tapi sekarang sampah plastik berserakan di jalanan, kebun warga tidak terurus, dan toko-toko kecil susah dapat bahan.'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'surprised',
-        text: 'Akibatnya warga jadi sedih dan desa kekurangan pendapatan. Kita harus berbuat sesuatu!'
+        text: 'Warga jadi sedih dan desa jadi susah cari uang. Kita harus berbuat sesuatu!'
       }
     ],
     facilitatorGuide: {
@@ -126,10 +132,10 @@ export const STORY_SCENES: Record<string, SceneData> = {
     background: 'village_dirty',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'thinking',
-        text: 'Teman-teman kelas, maukah kalian menjadi penasihatku dan membantu membersihkan Desa Sukamaju?'
+        text: 'Teman-teman kelas, maukah kalian menjadi penasihatku dan membantu membersihkan Desa Sadasari?'
       }
     ],
     choices: [
@@ -144,7 +150,7 @@ export const STORY_SCENES: Record<string, SceneData> = {
       {
         id: 'c1_nanti',
         label: 'NANTI DULU... 😅',
-        description: 'Coba tanya Windah lagi.',
+        description: 'Coba tanya Yanti lagi.',
         icon: '😅',
         nextSceneId: 'SC-005_loop',
         indicatorImpact: {}
@@ -153,7 +159,7 @@ export const STORY_SCENES: Record<string, SceneData> = {
     facilitatorGuide: {
       objective: 'Mengajak siswa aktif menyetujui komitmen awal petualangan.',
       discussionPrompts: [
-        'Lakukan voting tangan singkat: Siapa yang setuju membantu Windah sekarang?',
+        'Lakukan voting tangan singkat: Siapa yang setuju membantu Yanti & Dika sekarang?',
         'Ajak seluruh siswa bersorak "AYO BANTU!" bersama-sama.'
       ],
       keyTakeaway: 'Perubahan besar dimulai dari keputusan dan komitmen bersama.'
@@ -169,8 +175,8 @@ export const STORY_SCENES: Record<string, SceneData> = {
     nextSceneId: 'SC-006',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'happy',
         text: 'Terima kasih teman-teman semua! Mari kita mulai dengan membersihkan jalanan desa dari sampah.'
       }
@@ -184,10 +190,11 @@ export const STORY_SCENES: Record<string, SceneData> = {
     act: 1,
     background: 'village_dirty',
     nextSceneId: 'SC-005', // Return back to SC-005 question so player can pick AYO BANTU
+    skipTypewriter: true,
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'happy',
         text: 'Hehehe... Kalau bukan kita, siapa lagi yang menyelamatkan desa? Yuk, kita bersihkan bersama sekarang! 💪'
       }
@@ -209,8 +216,8 @@ export const STORY_SCENES: Record<string, SceneData> = {
     nextSceneId: 'SC-007',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'happy',
         text: 'Lihat ada 10 sampah berserakan! Seret atau klik sampah-sampah ini ke dalam tempat sampah ya! 🗑️'
       }
@@ -234,20 +241,20 @@ export const STORY_SCENES: Record<string, SceneData> = {
     nextSceneId: 'SC-008',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'proud',
         text: 'Wahhh! Luar biasa! Jalanan desa sekarang kelihatan jauh lebih bersih dan asri! ✨'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'thinking',
-        text: 'Tapi ingat, sampah yang kita kumpulkan tadi belum dipilah. Kalau langsung dibuang begitu saja, akan menumpuk di TPA.'
+        text: 'Tapi ingat, sampah yang kita kumpulkan tadi belum dipilah. Kalau langsung dibuang campur-campur begitu saja, sampahnya jadi susah dipakai ulang!'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'happy',
         text: 'Yuk kita pilah sampah sesuai jenisnya agar bisa dimanfaatkan kembali!'
       }
@@ -272,8 +279,8 @@ export const STORY_SCENES: Record<string, SceneData> = {
     nextSceneId: 'SC-009',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'happy',
         text: 'Pilah sampah ke dalam 3 tong: Organik (Hijau), Anorganik (Biru), dan B3 (Merah)! ♻️'
       }
@@ -291,54 +298,215 @@ export const STORY_SCENES: Record<string, SceneData> = {
 
   'SC-009': {
     id: 'SC-009',
-    title: 'Bank Sampah Pak Jaya',
+    title: 'Bank Sampah PKK Sadasari',
     category: 'story',
     act: 2,
     background: 'bank_sampah',
     dialogPosition: 'right',
-    nextSceneId: 'SC-010',
+    nextSceneId: 'SC-009B',
     dialogues: [
       {
-        speaker: 'Pak Jaya',
-        character: 'pak_jaya',
+        speaker: 'Ibu PKK',
+        character: 'ibu_pkk',
         expression: 'happy',
-        text: 'Halo anak-anak hebat! Saya Pak Jaya pengelola Bank Sampah Desa Sukamaju. 🏦'
+        text: 'Halo anak-anak! Saya pengurus Bank Sampah PKK Desa Sadasari. Wah, sampah kalian sudah dipilah rapi sekali! 🏦'
       },
       {
-        speaker: 'Pak Jaya',
-        character: 'pak_jaya',
+        speaker: 'Ibu PKK',
+        character: 'ibu_pkk',
         expression: 'proud',
-        text: 'Karena kalian sudah memilah sampah anorganik dengan rapi, Bank Sampah membeli sampah botol dan kardus ini seharga Rp 50.000!'
+        text: 'Di Bank Sampah PKK ini, kami mengelola dua jenis: 🟢 Bank Sampah Organik dan 🔵 Bank Sampah Plastik. Ibu-ibu PKK yang mengelolanya bersama!'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
-        expression: 'surprised',
-        text: 'Horeee! 💰 Ternyata sampah yang dipilah mempunyai nilai ekonomi dan menghasilkan uang!'
+        speaker: 'Dika',
+        character: 'dika',
+        expression: 'thinking',
+        text: 'Bu, kalau kita setor sampah ke sini, kita langsung dapat uang ya?'
+      },
+      {
+        speaker: 'Ibu PKK',
+        character: 'ibu_pkk',
+        expression: 'thinking',
+        text: 'Belum tentu langsung dapat uang, Dika. Bank Sampah PKK kita masih baru. Sampah plastiknya nanti ibu-ibu PKK bikin jadi kerajinan atau dijual — uangnya masuk ke tabungan PKK buat kegiatan desa!'
+      },
+      {
+        speaker: 'Yanti',
+        character: 'yanti',
+        expression: 'happy',
+        text: 'Wah keren! Jadi sampah kita berguna buat kegiatan PKK dan desa! Kalau sampah organiknya diapakan, Bu?'
+      },
+      {
+        speaker: 'Ibu PKK',
+        character: 'ibu_pkk',
+        expression: 'proud',
+        text: 'Sampah organik kita pakai untuk budidaya maggot! Maggot-nya jadi pakan ayam dan ikan warga. Yuk kita lihat prosesnya!'
       }
     ],
     facilitatorGuide: {
-      objective: 'Mengenal konsep Bank Sampah dan nilai ekonomi dari barang bekas.',
+      objective: 'Mengenal konsep Bank Sampah PKK dan realita pengelolaannya di Desa Sadasari.',
       discussionPrompts: [
         'Siapa yang tahu apa itu Bank Sampah?',
-        'Bagaimana sampah plastik bisa berubah menjadi modal uang Rp 50.000?'
+        'Mengapa hasil bank sampah belum tentu langsung jadi uang untuk warga yang setor?',
+        'Apa manfaat sampah plastik yang masuk kas PKK?'
       ],
-      keyTakeaway: 'Sampah terpilah bukan lagi kotoran, melainkan tabungan ekonomi!'
+      keyTakeaway: 'Bank Sampah PKK Sadasari mengelola plastik → kerajinan/dijual → kas PKK; organik → maggot → pakan ternak!'
+    }
+  },
+
+  'SC-009B': {
+    id: 'SC-009B',
+    title: 'Menuju Area Budidaya Maggot',
+    category: 'story',
+    act: 2,
+    background: 'maggot_real_bg',
+    nextSceneId: 'SC-MAGGOT-INTRO',
+    dialogues: [
+      {
+        speaker: 'Ibu PKK',
+        character: 'ibu_pkk',
+        expression: 'happy',
+        text: 'Ayo ikut Ibu ke area budidaya maggot! Di sini kita manfaatkan sisa sayur dan kulit buah dari rumah-rumah warga.'
+      },
+      {
+        speaker: 'Dika',
+        character: 'dika',
+        expression: 'surprised',
+        text: 'Wah! Ini maggot-nya? Seperti ulat kecil-kecil ya, Bu? Hiiih... tapi katanya bermanfaat!'
+      },
+      {
+        speaker: 'Ibu PKK',
+        character: 'ibu_pkk',
+        expression: 'happy',
+        text: 'Betul, Dika! Maggot itu seperti ulat kecil dari lalat tentara hitam. Mereka bisa memakan sampah sisa makanan dengan sangat cepat, dan hasilnya jadi makanan ternak yang bagus! 🪱'
+      }
+    ],
+    facilitatorGuide: {
+      objective: 'Mengenalkan budidaya maggot sebagai cara memanfaatkan sampah organik.',
+      discussionPrompts: [
+        'Apakah ada yang pernah melihat maggot / ulat sebelumnya?',
+        'Kenapa maggot bisa memakan sampah organik?'
+      ],
+      keyTakeaway: 'Maggot itu seperti "mesin pemakan sampah" alami yang ramah lingkungan.'
+    }
+  },
+
+  'SC-MAGGOT-INTRO': {
+    id: 'SC-MAGGOT-INTRO',
+    title: 'Cara Budidaya Maggot',
+    category: 'story',
+    act: 2,
+    background: 'maggot_close_up_bg',
+    nextSceneId: 'SC-MAGGOT-GAME',
+    dialogues: [
+      {
+        speaker: 'Ibu PKK',
+        character: 'ibu_pkk',
+        expression: 'proud',
+        text: 'Yang pertama: kita harus pilih makanan yang pas buat maggot. Sisa sayuran, kulit buah, dan daun kering itu paling disukai maggot!'
+      },
+      {
+        speaker: 'Yanti',
+        character: 'yanti',
+        expression: 'thinking',
+        text: 'Kalau botol plastik atau baterai boleh dimasukkan ke wadah maggot, Bu?'
+      },
+      {
+        speaker: 'Ibu PKK',
+        character: 'ibu_pkk',
+        expression: 'sad',
+        text: 'Jangan, Yanti! Maggot cuma bisa makan sisa makanan dan daun-daunan. Plastik dan baterai itu bahaya, bisa bikin maggotnya mati!'
+      },
+      {
+        speaker: 'Dika',
+        character: 'dika',
+        expression: 'happy',
+        text: 'Oke, ayo kita coba sendiri cara budidaya maggotnya! Pasti seru!'
+      }
+    ],
+    facilitatorGuide: {
+      objective: 'Memahami syarat bahan organik yang cocok untuk budidaya maggot.',
+      discussionPrompts: [
+        'Dari sisa makanan sehari-hari, kira-kira mana yang cocok untuk maggot?',
+        'Apa yang terjadi jika kita salah memasukkan bahan ke wadah maggot?'
+      ],
+      keyTakeaway: 'Maggot hanya makan organik — tidak boleh dicampur plastik atau B3!'
+    }
+  },
+
+  'SC-MAGGOT-GAME': {
+    id: 'SC-MAGGOT-GAME',
+    title: 'Mini Game: Budidaya Maggot',
+    category: 'minigame',
+    act: 2,
+    background: 'kebun',
+    miniGameType: 'maggot',
+    nextSceneId: 'SC-MAGGOT-OUTRO',
+    dialogues: [],
+    facilitatorGuide: {
+      objective: 'Mensimulasikan proses budidaya maggot secara interaktif.',
+      discussionPrompts: [
+        'Pilih bahan organik yang benar, isi wadah, percepat pertumbuhan, lalu panen!',
+        'Maggot bisa diberi ke kandang ayam atau kolam ikan warga.'
+      ],
+      keyTakeaway: 'Proses budidaya maggot: pilih bahan → isi wadah → tumbuh → panen → distribusi ternak.'
+    }
+  },
+
+  'SC-MAGGOT-OUTRO': {
+    id: 'SC-MAGGOT-OUTRO',
+    title: 'Hasil Budidaya Maggot',
+    category: 'story',
+    act: 2,
+    background: 'chickens_maggot_real_bg',
+    nextSceneId: 'SC-010',
+    dialogues: [
+      {
+        speaker: 'Ibu PKK',
+        character: 'ibu_pkk',
+        expression: 'proud',
+        text: 'Hebat! Kalian berhasil budidaya maggot! Maggot ini sekarang jadi makanan ayam dan ikan warga, gratis! 🐔🐟'
+      },
+      {
+        speaker: 'Dika',
+        character: 'dika',
+        expression: 'happy',
+        text: 'Jadi sampah sisa makanan yang tadi bau, sekarang jadi makanan buat ternak? Keren banget!'
+      },
+      {
+        speaker: 'Yanti',
+        character: 'yanti',
+        expression: 'proud',
+        text: 'Kita berhasil mengubah masalah jadi hal yang berguna! Sampah sisa makanan jadi makanan ternak — desa jadi lebih makmur! 🌱'
+      },
+      {
+        speaker: 'Ibu PKK',
+        character: 'ibu_pkk',
+        expression: 'happy',
+        text: 'Sekarang lanjut! Sampah sisa makanan bisa juga jadi pupuk. Dan sampah plastik dari bank sampah bisa kita manfaatkan juga! ♻️'
+      }
+    ],
+    facilitatorGuide: {
+      objective: 'Mengapresiasi hasil budidaya maggot dan menghubungkannya dengan ketahanan pangan.',
+      discussionPrompts: [
+        'Berapa banyak pakan ternak yang bisa dihemat jika semua sampah organik dibudidayakan maggot?',
+        'Apa manfaat lain dari maggot selain pakan ternak?'
+      ],
+      keyTakeaway: 'Maggot = solusi sampah organik + ketahanan pangan desa secara bersamaan!'
     }
   },
 
   'SC-010': {
     id: 'SC-010',
-    title: 'Keputusan 1: Penggunaan Uang',
+    title: 'Keputusan: Penggunaan Kas PKK',
     category: 'decision',
     act: 3,
     background: 'toko',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Ibu PKK',
+        character: 'ibu_pkk',
         expression: 'thinking',
-        text: 'Kita sekarang punya uang Rp 50.000 dari Bank Sampah. Menurut teman-teman kelas, uang ini sebaiknya dipakai untuk apa ya? 🤔'
+        text: 'Anak-anak, dari hasil jual sampah plastik, tabungan PKK kita sudah terkumpul Rp 50.000. Menurut kalian, uang ini enaknya dipakai buat apa ya? 🤔'
       }
     ],
     choices: [
@@ -367,9 +535,10 @@ export const STORY_SCENES: Record<string, SceneData> = {
         'Tanyakan: Jika dibelikan permen & jajan, apa yang terjadi besok?',
         'Jika dibelikan bibit, apa yang akan tumbuh minggu depan?'
       ],
-      keyTakeaway: 'Konsumsi memberikan kenikmatan sesaat, investasi membangun masa depan.'
+      keyTakeaway: 'Kas PKK lebih baik diputar untuk investasi produktif desa!'
     }
   },
+
 
   'SC-011A': {
     id: 'SC-011A',
@@ -378,28 +547,29 @@ export const STORY_SCENES: Record<string, SceneData> = {
     act: 3,
     background: 'toko',
     nextSceneId: 'SC-010', // Loop back to decision SC-010
+    skipTypewriter: true,
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'happy',
         text: 'Nyam... nyam... Permen dan snack-nya enak banget! Tapi aduh...'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'sad',
-        text: 'Uang Rp 50.000 kita langsung habis, dan malah menghasilkan tumpukan bungkus plastik snack di mana-mana! 😱'
+        text: 'Uang Rp 50.000 kita langsung habis, dan malah nambah tumpukan bungkus plastik snack di mana-mana! 😱'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'sad',
-        text: 'Kebun desa tetap kosong, dan jalanan jadi kotor lagi...'
+        text: 'Kebun desa tetap kosong, dan jalanan jadi kotor lagi karena bungkus jajanan...'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'thinking',
         text: 'Yuk kita ulang dan pilih opsi yang lebih bijak (Beli Bibit Sayur)!'
       }
@@ -423,8 +593,8 @@ export const STORY_SCENES: Record<string, SceneData> = {
     nextSceneId: 'SC-012',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'happy',
         text: 'Pilihan hebat! 🌟 Kita berhasil membeli 5 kantong bibit sayuran segar dan unggul!'
       },
@@ -435,8 +605,8 @@ export const STORY_SCENES: Record<string, SceneData> = {
         text: 'Selamat datang anak-anak! Saya Pak Tani. Mari kita tanam bibit ini di tanah kebun yang sudah gembur.'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'happy',
         text: 'Yuk teman-teman, kita bantu Pak Tani menanam dan menyiram bibitnya!'
       }
@@ -486,14 +656,14 @@ export const STORY_SCENES: Record<string, SceneData> = {
     nextSceneId: 'SC-014',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'happy',
         text: 'Hari demi hari berganti... Siang ☀️ dan Malam 🌙 kita merawat kebun dengan tekun...'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'surprised',
         text: 'Lihat!! Tanaman cabai dan tomat kita tumbuh sangat tinggi, hijau, dan berbuah lebat! 🌶️🍅'
       },
@@ -524,8 +694,8 @@ export const STORY_SCENES: Record<string, SceneData> = {
     nextSceneId: 'SC-015',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'happy',
         text: 'Petik semua sayuran, cabai, dan tomat matang langsung dari pohon! Klik buah-buah yang ranum! 🧺'
       }
@@ -548,8 +718,8 @@ export const STORY_SCENES: Record<string, SceneData> = {
     background: 'umkm',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'thinking',
         text: 'Wah, hasil panen kita melimpah sekali! 🧺 Menurut teman-teman, hasil panen ini sebaiknya diapakan ya?'
       }
@@ -590,6 +760,7 @@ export const STORY_SCENES: Record<string, SceneData> = {
     act: 4,
     background: 'sawah',
     nextSceneId: 'SC-015', // Loop back to decision SC-015
+    skipTypewriter: true,
     dialogues: [
       {
         speaker: 'Warga',
@@ -604,16 +775,16 @@ export const STORY_SCENES: Record<string, SceneData> = {
         text: 'Sayang sekali toko UMKM saya tidak punya bahan cabai dan tomat lokal, jadi toko terpaksa tutup sementara... 😔'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'thinking',
-        text: 'Warga memang kenyang sebentar, tetapi desa tidak mendapatkan pemasukan modal baru untuk perputaran UMKM.'
+        text: 'Warga memang kenyang hari ini, tapi desa tidak dapat uang baru dari hasil panen. Sayang kan?'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'happy',
-        text: 'Yuk kita coba jual sebagian ke UMKM Bu Rina agar ekonomi desa berputar!'
+        text: 'Yuk kita coba jual sebagian ke toko Bu Rina biar desa dapat uang juga!'
       }
     ],
     facilitatorGuide: {
@@ -632,25 +803,25 @@ export const STORY_SCENES: Record<string, SceneData> = {
     category: 'story',
     act: 4,
     background: 'umkm',
-    nextSceneId: 'SC-017',
+    nextSceneId: 'SC-CRAFT-INTRO',
     dialogues: [
       {
         speaker: 'Bu Rina',
         character: 'bu_rina',
         expression: 'proud',
-        text: 'Terima kasih anak-anak! Dari tomat dan cabai ini, UMKM kami membuat Sambal Botol Desa dan Keripik Sayur Renyah! 🥫 Chips!'
+        text: 'Terima kasih anak-anak! Dari tomat dan cabai ini, toko kami bisa bikin Sambal Botol Desa dan Keripik Sayur Renyah! 🥫'
       },
       {
         speaker: 'Bu Rina',
         character: 'bu_rina',
         expression: 'happy',
-        text: 'Produk olahan ini laku keras dijual ke kota! UMKM untung, Pak Tani mendapat bayaran layak, dan warga mendapat pekerjaan!'
+        text: 'Sambal dan keripik ini laku dijual ke kota! Toko untung, Pak Tani dapat uang, dan warga dapat kerja!'
       },
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'proud',
-        text: 'Inilah yang dinamakan Ekonomi Sirkular Berbasis UMKM! Semua pihak saling menguntungkan! 🎉'
+        text: 'Ini namanya saling bantu! Sampah jadi bersih, tanaman tumbuh, toko laku, semua warga senang! 🎉'
       }
     ],
     facilitatorGuide: {
@@ -663,34 +834,159 @@ export const STORY_SCENES: Record<string, SceneData> = {
     }
   },
 
+  'SC-CRAFT-INTRO': {
+    id: 'SC-CRAFT-INTRO',
+    title: 'Mengolah Limbah Plastik',
+    category: 'story',
+    act: 4,
+    background: 'sampah_botol_real_bg',
+    nextSceneId: 'SC-CRAFT-GAME',
+    dialogues: [
+      {
+        speaker: 'Yanti',
+        character: 'yanti',
+        expression: 'thinking',
+        text: 'Oh iya Bu Rina! Di sudut UMKM ada banyak sekali botol plastik bekas kemasan yang menumpuk. Mau dikemanakan?'
+      },
+      {
+        speaker: 'Bu Rina',
+        character: 'bu_rina',
+        expression: 'sad',
+        text: 'Biasanya langsung kami buang atau dibakar, tapi asapnya membuat warga batuk-batuk... 😔'
+      },
+      {
+        speaker: 'Dika',
+        character: 'dika',
+        expression: 'happy',
+        text: 'Bagaimana kalau botol bekas ini kita daur ulang menjadi Pot Bunga Gantung Sadasari yang cantik? Warga pasti suka!'
+      },
+      {
+        speaker: 'Yanti',
+        character: 'yanti',
+        expression: 'happy',
+        text: 'Ide hebat, Dika! Ayo teman-teman kelas, mari kita buat pot bunga gantung yang indah dari botol bekas ini! 🌺'
+      }
+    ],
+    facilitatorGuide: {
+      objective: 'Mengajak siswa peduli dengan limbah plastik di sekitar toko UMKM.',
+      discussionPrompts: [
+        'Apa dampak buruk jika botol plastik dibakar sembarangan?',
+        'Siapa yang pernah membuat kerajinan dari botol bekas?'
+      ],
+      keyTakeaway: 'Limbah plastik harus dikelola dengan kreatif agar tidak mencemari udara.'
+    }
+  },
+
+  'SC-CRAFT-GAME': {
+    id: 'SC-CRAFT-GAME',
+    title: 'Membuat Pot Bunga Gantung',
+    category: 'minigame',
+    act: 4,
+    background: 'umkm',
+    miniGameType: 'plastic_craft',
+    nextSceneId: 'SC-CRAFT-OUTRO',
+    dialogues: [],
+    facilitatorGuide: {
+      objective: 'Mempraktikkan langkah-langkah daur ulang botol plastik.',
+      discussionPrompts: [
+        'Ikuti langkah membersihkan, memotong, mencat, menghias, hingga menanam bunga!',
+        'Ajak siswa memilih warna cat pot bersama-sama.'
+      ],
+      keyTakeaway: 'Proses daur ulang membutuhkan ketelitian dan kreativitas.'
+    }
+  },
+
+  'SC-CRAFT-OUTRO': {
+    id: 'SC-CRAFT-OUTRO',
+    title: 'Hasil Karya Bermanfaat',
+    category: 'story',
+    act: 4,
+    background: 'village_clean',
+    nextSceneId: 'SC-QUIZ',
+    dialogues: [
+      {
+        speaker: 'Yanti',
+        character: 'yanti',
+        expression: 'happy',
+        text: 'Lihat! Pot gantung kita sudah selesai dihias dan bunganya tumbuh sangat cantik! 🌸'
+      },
+      {
+        speaker: 'Dika',
+        character: 'dika',
+        expression: 'proud',
+        text: 'Wah, halaman desa kita sekarang jadi indah sekali karena dihiasi pot-pot gantung warna-warni ini!'
+      },
+      {
+        speaker: 'Bu Rina',
+        character: 'bu_rina',
+        expression: 'happy',
+        text: 'Hebat sekali! Selain mempercantik desa, pot gantung ini laku dijual seharga Rp 5.000 per buah! Ini menambah manfaat ekonomi desa kita! 💰'
+      }
+    ],
+    facilitatorGuide: {
+      objective: 'Mengapresiasi hasil karya daur ulang siswa.',
+      discussionPrompts: [
+        'Bagaimana rasanya mengubah sampah plastik yang kotor menjadi pot bunga indah?',
+        'Berapa harga jual pot bunga yang kita buat?'
+      ],
+      keyTakeaway: 'Kreativitas daur ulang memberikan nilai estetika dan manfaat finansial.'
+    }
+  },
+
   'SC-017': {
     id: 'SC-017',
-    title: 'Rekap Perjalanan Kelas',
+    title: 'Ringkasan Perjalanan Kelas',
     category: 'story',
     act: 4,
     background: 'village_clean',
     nextSceneId: 'SC-018',
     dialogues: [
       {
-        speaker: 'Windah',
-        character: 'windah',
+        speaker: 'Yanti',
+        character: 'yanti',
         expression: 'proud',
-        text: 'Luar biasa teman-teman! Mari kita lihat rekapitulasi keputusan yang telah diambil oleh kelas kita!'
+        text: 'Hebat sekali teman-teman! Kita sudah menyelesaikan kuis dan sekarang mari kita lihat ringkasan perjalanan kita dari awal sampai sekarang! 🌟'
       }
     ],
     facilitatorGuide: {
-      objective: 'Meningat kembali rantai keputusan dari awal hingga akhir.',
+      objective: 'Mengingat kembali semua yang sudah dipelajari dari awal sampai akhir.',
       discussionPrompts: [
-        'Ajak kelas meninjau 4 indikator utama yang sudah terkumpul.',
-        'Persiapkan pengumuman status akhir Desa Sukamaju!'
+        'Ajak kelas melihat 4 batang indikator yang sudah terkumpul.',
+        'Siapkan pengumuman status akhir Desa Sadasari!'
       ],
-      keyTakeaway: 'Setiap pilihan kelas membentuk masa depan Desa Sukamaju.'
+      keyTakeaway: 'Setiap pilihan kelas membentuk masa depan Desa Sadasari.'
+    }
+  },
+
+  'SC-QUIZ': {
+    id: 'SC-QUIZ',
+    title: 'Kuis Interaktif Sadasari',
+    category: 'minigame',
+    act: 4,
+    background: 'village_clean',
+    miniGameType: 'quiz',
+    nextSceneId: 'SC-017',
+    dialogues: [
+      {
+        speaker: 'Yanti',
+        character: 'yanti',
+        expression: 'happy',
+        text: 'Nah, sekarang saatnya kita tes pengetahuan kita! Siapa yang masih ingat apa yang sudah kita pelajari? Semangat ya! 🌟'
+      }
+    ],
+    facilitatorGuide: {
+      objective: 'Menguji dan memperkuat pemahaman siswa mengenai materi pengelolaan sampah.',
+      discussionPrompts: [
+        'Bacakan setiap pertanyaan kuis ke seluruh kelas.',
+        'Minta siswa melakukan voting tunjuk tangan sebelum memilih jawaban.'
+      ],
+      keyTakeaway: 'Kuis interaktif melatih ingatan dan pemahaman siswa.'
     }
   },
 
   'SC-018': {
     id: 'SC-018',
-    title: 'Ending Desa Sukamaju',
+    title: 'Ending Desa Sadasari',
     category: 'ending',
     act: 4,
     background: 'village_clean',
@@ -702,7 +998,7 @@ export const STORY_SCENES: Record<string, SceneData> = {
         'Berikan tepuk tangan meriah untuk seluruh siswa pahlawan desa!',
         'Ajak siswa melihat perubahan indikator akhir.'
       ],
-      keyTakeaway: 'Selamat! Kelas berhasil membawa perubahan positif bagi Desa Sukamaju!'
+      keyTakeaway: 'Selamat! Kelas berhasil membawa perubahan positif bagi Desa Sadasari!'
     }
   },
 

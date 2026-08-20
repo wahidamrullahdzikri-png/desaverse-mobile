@@ -1,4 +1,4 @@
-export type CharacterType = 'windah' | 'pak_jaya' | 'pak_tani' | 'bu_rina' | 'warga';
+export type CharacterType = 'windah' | 'pak_jaya' | 'pak_tani' | 'bu_rina' | 'warga' | 'yanti' | 'dika' | 'ibu_pkk';
 
 export type CharacterExpression = 'happy' | 'sad' | 'thinking' | 'surprised' | 'proud' | 'neutral';
 
@@ -11,7 +11,7 @@ export interface Indicators {
 
 export type SceneCategory = 'opening' | 'story' | 'minigame' | 'decision' | 'ending' | 'reflection';
 
-export type MiniGameType = 'trash_cleanup' | 'waste_sorting' | 'planting' | 'harvest';
+export type MiniGameType = 'trash_cleanup' | 'waste_sorting' | 'planting' | 'harvest' | 'quiz' | 'plastic_craft' | 'maggot';
 
 export interface ChoiceOption {
   id: string;
@@ -43,13 +43,14 @@ export interface SceneData {
   title: string;
   category: SceneCategory;
   act: 1 | 2 | 3 | 4;
-  background: 'village_dirty' | 'village_clean' | 'bank_sampah' | 'toko' | 'kebun' | 'sawah' | 'umkm' | 'balai_desa' | 'splash';
+  background: 'village_dirty' | 'village_clean' | 'bank_sampah' | 'toko' | 'kebun' | 'sawah' | 'umkm' | 'balai_desa' | 'splash' | 'kebun_lebat' | 'maggot_real_bg' | 'chickens_maggot_real_bg' | 'sampah_botol_real_bg' | 'maggot_close_up_bg';
   dialogues: DialogueLine[];
   choices?: ChoiceOption[];
   miniGameType?: MiniGameType;
-  facilitatorGuide: FacilitatorGuide;
+  facilitatorGuide?: FacilitatorGuide;
   nextSceneId?: string;
   dialogPosition?: 'top' | 'bottom' | 'left' | 'right';
+  skipTypewriter?: boolean;
 }
 
 export interface GameState {

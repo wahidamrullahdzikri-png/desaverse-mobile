@@ -5,12 +5,16 @@ import { TrashCleanupGame } from './minigames/TrashCleanupGame';
 import { WasteSortingGame } from './minigames/WasteSortingGame';
 import { PlantingGame } from './minigames/PlantingGame';
 import { HarvestGame } from './minigames/HarvestGame';
+import { InteractiveQuiz } from './minigames/InteractiveQuiz';
+import { PlasticCraftGame } from './minigames/PlasticCraftGame';
+import { MaggotGame } from './minigames/MaggotGame';
 import { audioService } from '../utils/audio';
 
 interface SceneRendererProps {
   scene: SceneData;
   onNextScene: (targetSceneId?: string) => void;
   onSelectChoice: (choice: ChoiceOption) => void;
+  skipTypewriter?: boolean;
 }
 
 // Growing transition component for SC-013
@@ -156,6 +160,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
   scene,
   onNextScene,
   onSelectChoice,
+  skipTypewriter,
 }) => {
   const [showGrowingTransition, setShowGrowingTransition] = useState(false);
   const [growingDone, setGrowingDone] = useState(false);
@@ -176,6 +181,14 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
     }
   }, [scene.id]);
 
+  // Auto-progress if dialogues are empty and has a nextSceneId (e.g. transition scenes)
+  useEffect(() => {
+    const isMinigame = scene.category === 'minigame' && scene.miniGameType;
+    if (!isMinigame && (!scene.dialogues || scene.dialogues.length === 0) && scene.nextSceneId) {
+      onNextScene(scene.nextSceneId);
+    }
+  }, [scene.id, scene.dialogues, scene.nextSceneId, scene.category, scene.miniGameType, onNextScene]);
+
   // Map scene background to our generated image paths
   const getBackgroundImage = (bg: string) => {
     switch (bg) {
@@ -187,6 +200,10 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
       case 'kebun_lebat': return '/images/bg_kebun_lebat.jpg';
       case 'toko':
       case 'umkm': return '/images/bg_umkm.jpg';
+      case 'maggot_real_bg': return '/images/bg_maggot_bin_real.jpg';
+      case 'chickens_maggot_real_bg': return '/images/bg_chickens_maggot_real.jpg';
+      case 'sampah_botol_real_bg': return '/images/bg_sampah_botol_real.jpg';
+      case 'maggot_close_up_bg': return '/images/maggot_real.jpg';
       default: return '';
     }
   };
@@ -196,11 +213,11 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
   // Determine dialog placement container classes
   const getDialogContainerClasses = () => {
     const pos = scene.dialogPosition || 'bottom';
-    if (pos === 'top') return 'justify-start pt-12';
+    if (pos === 'top') return 'justify-start pt-6 md:pt-12';
     if (pos === 'center') return 'justify-center items-center';
-    if (pos === 'left') return 'justify-center items-start pl-8';
-    if (pos === 'right') return 'justify-center items-end pr-8';
-    return 'justify-end pb-4'; // default bottom
+    if (pos === 'left') return 'justify-center items-start pl-2 md:pl-8';
+    if (pos === 'right') return 'justify-center items-end pr-2 md:pr-8';
+    return 'justify-end pb-1 md:pb-4'; // default bottom
   };
 
   const isMinigameScene = scene.category === 'minigame' && scene.miniGameType;
@@ -210,7 +227,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
     return (
       <div className="relative w-full h-full flex flex-col overflow-y-auto bg-gradient-to-b from-amber-100 via-amber-50 to-emerald-100">
         {/* Minigame content - scrollable, takes full space */}
-        <div className="flex-shrink-0 w-full max-w-5xl mx-auto p-2 md:p-4">
+        <div className="flex-shrink-0 w-full max-w-5xl mx-auto p-1 md:p-4">
           {scene.miniGameType === 'trash_cleanup' && (
             <TrashCleanupGame onComplete={() => {
               audioService.playMagicChime();
@@ -235,16 +252,35 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
               onNextScene(scene.nextSceneId);
             }} />
           )}
+          {scene.miniGameType === 'quiz' && (
+            <InteractiveQuiz onComplete={() => {
+              audioService.playFanfare();
+              onNextScene(scene.nextSceneId);
+            }} />
+          )}
+          {scene.miniGameType === 'plastic_craft' && (
+            <PlasticCraftGame onComplete={() => {
+              audioService.playFanfare();
+              onNextScene(scene.nextSceneId);
+            }} />
+          )}
+          {scene.miniGameType === 'maggot' && (
+            <MaggotGame onComplete={() => {
+              audioService.playFanfare();
+              onNextScene(scene.nextSceneId);
+            }} />
+          )}
         </div>
 
         {/* Dialogue below minigame - also scrollable */}
         {scene.dialogues && scene.dialogues.length > 0 && (
-          <div className="flex-shrink-0 w-full max-w-4xl mx-auto px-2 md:px-4 pb-4">
+          <div className="flex-shrink-0 w-full max-w-4xl mx-auto px-1.5 md:px-4 pb-2 md:pb-4">
             <DialogueBox
               dialogues={scene.dialogues}
               choices={scene.choices}
               onDialogueComplete={() => onNextScene(scene.nextSceneId)}
               onSelectChoice={onSelectChoice}
+              skipTypewriter={skipTypewriter}
             />
           </div>
         )}
@@ -279,7 +315,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
 
       {/* Main Interactive Stage: Story Dialogue */}
       {!showGrowingTransition && (
-        <div className={`relative z-10 flex-1 flex flex-col p-4 pointer-events-none ${getDialogContainerClasses()}`}>
+        <div className={`relative z-10 flex-1 flex flex-col p-1.5 md:p-4 pointer-events-none ${getDialogContainerClasses()}`}>
           <div className={`pointer-events-auto w-full max-w-4xl flex flex-col ${scene.dialogPosition === 'left' || scene.dialogPosition === 'right' ? 'w-1/2' : 'mx-auto'}`}>
             {/* Story Dialogue Box */}
             {scene.dialogues && scene.dialogues.length > 0 && (
@@ -288,6 +324,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
                 choices={scene.choices}
                 onDialogueComplete={() => onNextScene(scene.nextSceneId)}
                 onSelectChoice={onSelectChoice}
+                skipTypewriter={skipTypewriter}
               />
             )}
           </div>

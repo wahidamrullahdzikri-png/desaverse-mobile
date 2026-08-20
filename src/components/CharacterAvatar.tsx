@@ -25,9 +25,9 @@ export const CharacterAvatar: React.FC<CharacterAvatarProps> = ({
   }, []);
 
   const sizeClasses = {
-    sm: 'w-20 h-20',
-    md: 'w-32 h-32 md:w-44 md:h-44',
-    lg: 'w-48 h-48 md:w-64 md:h-64',
+    sm: 'w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20',
+    md: 'w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 lg:w-32 lg:h-32',
+    lg: 'w-16 h-16 sm:w-22 sm:h-22 md:w-28 md:h-28 lg:w-48 lg:h-48',
   }[size];
 
   // Motion class based on character expression
@@ -137,11 +137,44 @@ export const CharacterAvatar: React.FC<CharacterAvatarProps> = ({
               alt="Windah Avatar" 
               className="w-full h-full object-cover" 
             />
-            {/* Overlay the expression face on top of the image to keep animations or just let the image handle it */}
+          </div>
+        );
+
+      case 'yanti':
+        return (
+          <div className="w-full h-full rounded-full border-4 border-black overflow-hidden bg-white relative">
+            <img 
+              src="/images/yanti_avatar.jpg" 
+              alt="Yanti Avatar" 
+              className="w-full h-full object-cover" 
+            />
+          </div>
+        );
+
+      case 'dika':
+        return (
+          <div className="w-full h-full rounded-full border-4 border-black overflow-hidden bg-white relative">
+            <img 
+              src="/images/dika_avatar.jpg" 
+              alt="Dika Avatar" 
+              className="w-full h-full object-cover" 
+            />
+          </div>
+        );
+
+      case 'ibu_pkk':
+        return (
+          <div className="w-full h-full rounded-full border-4 border-black overflow-hidden bg-white relative">
+            <img
+              src="/images/ibu_pkk_avatar.jpg"
+              alt="Ibu PKK Avatar"
+              className="w-full h-full object-cover"
+            />
           </div>
         );
 
       case 'pak_jaya':
+
         return (
           <svg viewBox="0 0 110 110" className="w-full h-full drop-shadow-xl">
             <path d="M 25 30 Q 55 8 85 30 Z" fill="#2563EB" stroke="#000" strokeWidth="3.5" />

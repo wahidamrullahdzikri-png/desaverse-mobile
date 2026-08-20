@@ -155,9 +155,9 @@ export const TrashCleanupGame: React.FC<TrashCleanupGameProps> = ({ onComplete }
         </div>
 
         {/* Natural Scenery Road Area */}
-        <div className="relative w-full h-80 md:h-96 bg-gradient-to-b from-amber-200 via-amber-300 to-amber-700 border-4 border-black rounded-2xl overflow-hidden shadow-inner">
+        <div className="relative w-full h-[45vh] min-h-[190px] max-h-[380px] md:h-96 bg-gradient-to-b from-amber-200 via-amber-300 to-amber-700 border-4 border-black rounded-2xl overflow-hidden shadow-inner">
           {/* Muddy Road Lines */}
-          <div className="absolute inset-x-0 bottom-10 h-40 bg-stone-700 border-y-4 border-dashed border-stone-500 flex items-center justify-center">
+          <div className="absolute inset-x-0 bottom-2 md:bottom-10 h-24 md:h-40 bg-stone-700 border-y-4 border-dashed border-stone-500 flex items-center justify-center">
             <div className="w-full border-t-4 border-dashed border-yellow-400 opacity-60"></div>
           </div>
 
@@ -167,12 +167,37 @@ export const TrashCleanupGame: React.FC<TrashCleanupGameProps> = ({ onComplete }
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
-            className={`absolute bottom-4 right-6 z-20 transition-all duration-200 neo-box p-3 md:p-4 flex flex-col items-center justify-center ${
-              isOverBin ? 'bg-emerald-300 scale-110 ring-4 ring-yellow-400' : 'bg-yellow-300'
-            }`}
+            className={`absolute bottom-4 right-6 z-20 transition-all duration-200 flex flex-col items-center justify-center cursor-pointer
+              ${isOverBin ? 'scale-115' : 'hover:scale-105'}`}
           >
-            <span className="text-5xl md:text-6xl animate-bounce-subtle">🗑️</span>
-            <span className="neo-badge bg-white text-black px-2.5 py-0.5 text-xs md:text-sm font-black mt-1">
+            {/* Trash bin illustration (similar style to WasteSortingGame) */}
+            <div className="relative w-16 md:w-20 h-20 md:h-24 flex flex-col items-center justify-end">
+              {/* Lid */}
+              <div
+                className={`absolute top-0 w-full h-4 rounded-t-md border-2 border-black transition-transform ${isOverBin ? '-translate-y-2.5' : ''}`}
+                style={{ backgroundColor: '#be123c' }}
+              />
+              {/* Handle */}
+              <div
+                className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1.5 w-5 h-2 rounded-full border-2 border-black"
+                style={{ backgroundColor: '#be123c' }}
+              />
+              {/* Bin body */}
+              <div
+                className="w-full h-14 md:h-18 rounded-b-lg border-2 border-t-0 border-black flex items-center justify-center relative mt-3 bg-rose-500 shadow-[3px_3px_0px_#000]"
+              >
+                {/* Ribbed lines */}
+                <div className="absolute inset-0 flex justify-evenly items-stretch px-1.5 opacity-25">
+                  {[0,1,2].map(n => (
+                    <div key={n} className="w-0.5 bg-black rounded-full my-1.5" />
+                  ))}
+                </div>
+                {/* Indicator arrow or emoji */}
+                <span className="text-xl md:text-2xl font-black text-white select-none">🗑️</span>
+              </div>
+            </div>
+            {/* Label below trash bin */}
+            <span className="neo-badge bg-white text-black px-2 py-0.5 text-[10px] md:text-xs font-black mt-2">
               {isOverBin ? 'LEPAS DI SINI! ✨' : 'TEMPAT SAMPAH'}
             </span>
           </div>
@@ -214,7 +239,7 @@ export const TrashCleanupGame: React.FC<TrashCleanupGameProps> = ({ onComplete }
             <div className="absolute inset-0 bg-emerald-400/95 backdrop-blur-xs flex flex-col items-center justify-center p-6 animate-fadeIn z-30">
               <Sparkles className="w-16 h-16 text-yellow-300 mb-2 animate-spin" />
               <h2 className="font-extrabold text-2xl md:text-4xl text-slate-900 mb-1">
-                Horeee! Jalanan Desa Sukamaju Bersih! ✨
+                Horeee! Jalanan Desa Sadasari Bersih! ✨
               </h2>
               <p className="text-sm md:text-lg font-extrabold text-slate-900 mb-6">
                 Wah hebat! 10 Sampah berhasil dibersihkan! Indikator Lingkungan +10!
