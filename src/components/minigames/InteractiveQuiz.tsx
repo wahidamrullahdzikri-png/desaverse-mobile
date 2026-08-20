@@ -122,29 +122,29 @@ export const InteractiveQuiz: React.FC<InteractiveQuizProps> = ({ onComplete }) 
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto p-2 md:p-4 animate-fadeIn select-none">
-      <div className="neo-box-lg bg-amber-50 p-4 md:p-6 text-center relative overflow-hidden">
+    <div className="w-full max-w-3xl mx-auto p-1 animate-fadeIn select-none minigame-scroll-wrapper overflow-y-auto">
+      <div className="neo-box-lg bg-amber-50 p-2 md:p-6 text-center relative overflow-hidden">
         {/* Progress Bar & Header */}
-        <div className="flex items-center justify-between gap-3 mb-4 bg-white p-3 rounded-xl border-2 border-black">
-          <div className="text-left flex items-center gap-2">
-            <HelpCircle className="w-6 h-6 text-indigo-500" />
-            <h3 className="font-extrabold text-base md:text-xl text-slate-900">
+        <div className="flex items-center justify-between gap-2 mb-2 bg-white px-2 py-1 rounded-xl border border-black game-header-box">
+          <div className="text-left flex items-center gap-1">
+            <HelpCircle className="w-4 h-4 md:w-6 md:h-6 text-indigo-500" />
+            <h3 className="font-extrabold text-xs md:text-xl text-slate-900 leading-none">
               Kuis Interaktif Sadasari
             </h3>
           </div>
-          <span className="neo-badge bg-yellow-300 text-black px-3.5 py-1 text-sm md:text-base border-2 border-black font-black uppercase tracking-wider">
-            Soal {currentIdx + 1} / {questions.length}
+          <span className="neo-badge bg-yellow-300 text-black px-2 py-0.5 text-[10px] md:text-base border border-black font-black uppercase tracking-wider">
+            Soal {currentIdx + 1}/{questions.length}
           </span>
         </div>
-
+ 
         {/* Question Panel */}
-        <div className="bg-white border-4 border-black rounded-2xl p-5 md:p-8 shadow-[6px_6px_0px_#000] text-left mb-6">
-          <p className="text-lg md:text-2xl font-black text-slate-900 leading-snug mb-6">
+        <div className="bg-white border-2 border-black rounded-xl p-3 md:p-8 shadow-[3px_3px_0px_#000] text-left mb-3">
+          <p className="quiz-question text-sm md:text-2xl font-black text-slate-900 leading-snug mb-3">
             {currentQuestion.question}
           </p>
-
+ 
           {/* Options Grid */}
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             {currentQuestion.options.map((opt) => {
               const isSelected = selectedOption === opt.key;
               const isOptionCorrect = opt.key === currentQuestion.correctAnswer;
@@ -153,25 +153,24 @@ export const InteractiveQuiz: React.FC<InteractiveQuizProps> = ({ onComplete }) 
               if (showFeedback) {
                 if (isSelected) {
                   btnClass = isCorrect
-                    ? 'bg-emerald-200 border-black ring-4 ring-emerald-500'
-                    : 'bg-rose-200 border-black ring-4 ring-rose-500';
+                    ? 'bg-emerald-200 border-black ring-2 ring-emerald-500'
+                    : 'bg-rose-200 border-black ring-2 ring-rose-500';
                 } else if (isOptionCorrect && isCorrect) {
-                  // highlight correct answer when finished
                   btnClass = 'bg-emerald-100 border-black';
                 }
               }
-
+ 
               return (
                 <button
                   key={opt.key}
                   disabled={showFeedback && isCorrect}
                   onClick={() => handleSelectOption(opt.key)}
-                  className={`neo-btn p-4 text-left transition-all flex items-center gap-4 relative group transform hover:-translate-y-0.5 active:translate-y-0 ${btnClass}`}
+                  className={`quiz-choice-btn neo-btn p-2 md:p-4 text-left transition-all flex items-center gap-2 relative group transform hover:-translate-y-0.5 active:translate-y-0 ${btnClass}`}
                 >
-                  <span className="neo-badge bg-black text-white px-3 py-1 text-lg font-black flex-shrink-0">
+                  <span className="neo-badge bg-black text-white px-2 py-0.5 text-xs md:text-lg font-black flex-shrink-0">
                     {opt.key}
                   </span>
-                  <span className="text-base md:text-xl font-bold text-slate-900 leading-normal">
+                  <span className="text-xs md:text-xl font-bold text-slate-900 leading-tight">
                     {opt.text}
                   </span>
                 </button>
@@ -182,19 +181,17 @@ export const InteractiveQuiz: React.FC<InteractiveQuizProps> = ({ onComplete }) 
 
         {/* Class Discussion Mode Trigger */}
         {!showFeedback && (
-          <div className="mb-4">
+          <div className="mb-2">
             <button
               onClick={() => setIsClassDiscussionActive(!isClassDiscussionActive)}
-              className={`neo-btn px-4 py-2 text-sm md:text-base font-black flex items-center gap-2 mx-auto transform active:scale-95 transition-all ${
-                isClassDiscussionActive ? 'bg-amber-300' : 'bg-white hover:bg-slate-50'
-              }`}
+              className="neo-btn px-3 py-1.5 text-xs font-black flex items-center gap-1.5 mx-auto transform active:scale-95 transition-all bg-white hover:bg-slate-50"
             >
-              <span>🗳️</span> {isClassDiscussionActive ? 'Tutup Diskusi Kelas' : 'Diskusikan Bersama Teman-Teman'}
+              <span>🗳️</span> {isClassDiscussionActive ? 'Tutup Diskusi Kelas' : 'Diskusi Kelas'}
             </button>
 
             {isClassDiscussionActive && (
-              <div className="mt-3 p-4 bg-indigo-50 border-2 border-dashed border-indigo-400 rounded-xl max-w-md mx-auto text-left text-sm md:text-base font-bold text-indigo-900 animate-fadeIn">
-                📢 <strong>Fasilitator (Mahasiswa KKM):</strong> Minta seluruh siswa berdiskusi, lakukan pemungutan suara (tunjuk tangan), lalu klik jawaban yang paling banyak dipilih siswa.
+              <div className="mt-2 p-2 bg-indigo-50 border border-dashed border-indigo-400 rounded-lg max-w-sm mx-auto text-left text-[9px] md:text-sm font-bold text-indigo-900 animate-fadeIn leading-tight">
+                📢 Minta seluruh siswa berdiskusi, lakukan pemungutan suara, lalu klik pilihan terbanyak.
               </div>
             )}
           </div>
@@ -203,36 +200,36 @@ export const InteractiveQuiz: React.FC<InteractiveQuizProps> = ({ onComplete }) 
         {/* Feedback Panel */}
         {showFeedback && (
           <div
-            className={`border-4 border-black rounded-2xl p-5 shadow-[4px_4px_0px_#000] text-left animate-fadeIn ${
+            className={`border-2 border-black rounded-xl p-3 shadow-[2px_2px_0px_#000] text-left animate-fadeIn ${
               isCorrect ? 'bg-emerald-100' : 'bg-rose-100'
             }`}
           >
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-2">
               {isCorrect ? (
-                <CheckCircle2 className="w-8 h-8 text-emerald-600 flex-shrink-0 mt-0.5 stroke-[2.5]" />
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5 stroke-[2.5]" />
               ) : (
-                <AlertTriangle className="w-8 h-8 text-rose-600 flex-shrink-0 mt-0.5 stroke-[2.5]" />
+                <AlertTriangle className="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5 stroke-[2.5]" />
               )}
               <div>
-                <h4 className="font-extrabold text-lg md:text-xl text-slate-900 mb-1">
+                <h4 className="font-extrabold text-xs md:text-xl text-slate-900 mb-0.5 leading-none">
                   {isCorrect ? 'Jawaban Benar! 🎉' : 'Jawaban Kurang Tepat... 😅'}
                 </h4>
-                <p className="text-sm md:text-base font-bold text-slate-800 leading-relaxed mb-4">
+                <p className="text-[10px] md:text-base font-bold text-slate-800 leading-snug mb-2">
                   {currentQuestion.explanation}
                 </p>
 
                 {isCorrect ? (
                   <button
                     onClick={handleNext}
-                    className="neo-btn bg-emerald-400 hover:bg-emerald-300 text-black px-6 py-2.5 text-base md:text-lg flex items-center gap-2 font-black"
+                    className="neo-btn bg-emerald-400 hover:bg-emerald-300 text-black px-4 py-1.5 text-xs md:text-lg flex items-center gap-1.5 font-black"
                   >
                     <span>{currentIdx < questions.length - 1 ? 'Soal Berikutnya' : 'Selesaikan Kuis'}</span>
-                    <ArrowRight className="w-5 h-5 stroke-[2.5]" />
+                    <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                   </button>
                 ) : (
                   <button
                     onClick={handleTryAgain}
-                    className="neo-btn bg-yellow-300 hover:bg-yellow-200 text-black px-6 py-2.5 text-base md:text-lg font-black"
+                    className="neo-btn bg-yellow-300 hover:bg-yellow-200 text-black px-4 py-1.5 text-xs md:text-lg font-black"
                   >
                     🔄 Coba Pilihan Lain
                   </button>

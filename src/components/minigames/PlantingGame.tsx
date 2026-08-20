@@ -83,90 +83,91 @@ export const PlantingGame: React.FC<PlantingGameProps> = ({ onComplete }) => {
   );
 
   return (
-    <div className="w-full h-full flex flex-col p-4 animate-fadeIn select-none relative">
+    <div className="w-full h-full flex flex-col p-2 md:p-4 animate-fadeIn select-none relative overflow-y-auto minigame-scroll-wrapper">
       {/* Growing Transition Overlay */}
       {showGrowingTransition && (
-        <div className="absolute inset-0 bg-emerald-400 z-50 flex flex-col items-center justify-center animate-fadeIn p-6 rounded-3xl border-4 border-black">
-          <Sparkles className="w-24 h-24 text-yellow-300 mb-6 animate-spin-slow" />
-          <h2 className="font-extrabold text-3xl md:text-5xl text-slate-900 mb-4 drop-shadow-md text-center">
+        <div className="absolute inset-0 bg-emerald-400 z-50 flex flex-col items-center justify-center animate-fadeIn p-4 rounded-2xl border-4 border-black">
+          <Sparkles className="w-14 h-14 md:w-24 md:h-24 text-yellow-300 mb-3 animate-spin-slow" />
+          <h2 className="font-extrabold text-xl md:text-4xl text-slate-900 mb-2 drop-shadow-md text-center">
             Yeayyy! Bibit Mulai Bertumbuh! 🌱✨
           </h2>
-          <p className="text-xl md:text-2xl font-bold text-slate-800 mb-10 text-center">
+          <p className="text-sm md:text-xl font-bold text-slate-800 mb-4 text-center">
             Tanaman menyerap air dan perlahan menjadi besar...
           </p>
-          <div className="flex gap-4 mb-10">
-            <div className="text-6xl animate-bounce-subtle" style={{animationDelay: '0s'}}>🌱</div>
-            <div className="text-6xl animate-bounce-subtle" style={{animationDelay: '0.2s'}}>🌿</div>
-            <div className="text-6xl animate-bounce-subtle" style={{animationDelay: '0.4s'}}>🌳</div>
+          <div className="flex gap-3 mb-4">
+            <div className="text-4xl md:text-6xl animate-bounce-subtle" style={{animationDelay: '0s'}}>🌱</div>
+            <div className="text-4xl md:text-6xl animate-bounce-subtle" style={{animationDelay: '0.2s'}}>🌿</div>
+            <div className="text-4xl md:text-6xl animate-bounce-subtle" style={{animationDelay: '0.4s'}}>🌳</div>
           </div>
           <button
             onClick={onComplete}
-            className="neo-btn bg-yellow-300 hover:bg-yellow-400 text-black px-10 py-4 text-2xl flex items-center gap-3 animate-pulse"
+            className="neo-btn bg-yellow-300 hover:bg-yellow-400 text-black px-6 py-3 text-lg md:text-2xl flex items-center gap-2 animate-pulse"
           >
-            <CheckCircle2 className="w-8 h-8" /> Lanjut Panen
+            <CheckCircle2 className="w-6 h-6" /> Lanjut Panen
           </button>
         </div>
       )}
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 bg-white p-4 rounded-2xl border-4 border-black neo-shadow-strong">
+      <div className="game-header-box flex flex-row items-center justify-between gap-2 mb-2 bg-white p-2 md:p-4 rounded-xl border-2 border-black neo-shadow-strong flex-shrink-0">
         <div>
-          <h3 className="font-extrabold text-lg md:text-2xl text-slate-900">
-            Menanam & Menyiram 🌱
+          <h3 className="font-extrabold text-sm md:text-2xl text-slate-900 leading-tight">
+            Menanam &amp; Menyiram 🌱
           </h3>
-          <p className="text-sm md:text-base text-slate-700 font-bold mt-1">
-            Pilih alat (Bibit/Air) dan klik gundukan tanah untuk menanam!
+          <p className="text-[10px] md:text-base text-slate-700 font-bold leading-tight">
+            Pilih alat (Bibit/Air) dan klik gundukan tanah!
           </p>
         </div>
-        <div className="flex flex-col gap-2">
-          <div className="neo-badge bg-yellow-300 text-black px-4 py-1 text-sm md:text-base border-2 border-black font-black whitespace-nowrap">
-            Tertanam: {plantedCount} / {totalPlots}
+        <div className="flex flex-col gap-1 flex-shrink-0">
+          <div className="neo-badge bg-yellow-300 text-black px-2 py-0.5 text-[9px] md:text-base border-2 border-black font-black whitespace-nowrap">
+            Tanam: {plantedCount}/{totalPlots}
           </div>
-          <div className="neo-badge bg-sky-300 text-black px-4 py-1 text-sm md:text-base border-2 border-black font-black whitespace-nowrap">
-            Tersiram: {wateredCount} / {totalPlots}
+          <div className="neo-badge bg-sky-300 text-black px-2 py-0.5 text-[9px] md:text-base border-2 border-black font-black whitespace-nowrap">
+            Siram: {wateredCount}/{totalPlots}
           </div>
         </div>
       </div>
 
       {/* TOOLS */}
-      <div className="flex justify-center gap-6 mb-6">
+      <div className="flex justify-center gap-3 md:gap-6 mb-2 flex-shrink-0">
         <button
           onClick={() => { sound.playClick(); setActiveTool('seed'); }}
-          className={`neo-btn px-6 py-3 text-lg md:text-xl flex items-center gap-3 transition-all ${
+          className={`game-tool-btn neo-btn px-4 py-2 md:px-6 md:py-3 text-sm md:text-xl flex items-center gap-2 transition-all ${
             activeTool === 'seed' ? 'bg-amber-300 scale-110 border-4 ring-4 ring-black z-10' : 'bg-white hover:bg-slate-100 opacity-75'
           }`}
         >
-          <span className="text-3xl">🌱</span> <span className="font-black">1. Bibit</span>
+          <span className="text-xl md:text-3xl">🌱</span> <span className="font-black">1. Bibit</span>
         </button>
         <button
           onClick={() => { sound.playClick(); setActiveTool('water'); }}
-          className={`neo-btn px-6 py-3 text-lg md:text-xl flex items-center gap-3 transition-all ${
+          className={`game-tool-btn neo-btn px-4 py-2 md:px-6 md:py-3 text-sm md:text-xl flex items-center gap-2 transition-all ${
             activeTool === 'water' ? 'bg-sky-400 scale-110 border-4 ring-4 ring-black z-10' : 'bg-white hover:bg-slate-100 opacity-75'
           }`}
         >
-          <span className="text-3xl">🪣</span> <span className="font-black">2. Siram</span>
+          <span className="text-xl md:text-3xl">🪣</span> <span className="font-black">2. Siram</span>
         </button>
       </div>
 
       {/* DIRT PLOTS */}
-      <div className="relative flex-1 bg-gradient-to-b from-amber-700 to-amber-900 border-4 border-black rounded-3xl p-4 md:p-8 shadow-inner min-h-[300px]">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 h-full">
+      <div className="game-plot-area relative flex-1 bg-gradient-to-b from-amber-700 to-amber-900 border-4 border-black rounded-2xl p-2 md:p-8 shadow-inner min-h-[140px]">
+        <div className="grid grid-cols-3 md:grid-cols-3 gap-3 md:gap-10 h-full">
           {plots.map((plot) => (
             <div
               key={plot.id}
               onClick={() => handlePlotClick(plot.id)}
-              className={`relative cursor-pointer transition-transform hover:scale-105 active:scale-95 flex items-end justify-center ${
+              className={`game-grid-cell relative cursor-pointer transition-transform hover:scale-105 active:scale-95 flex items-end justify-center ${
                 activeTool === 'seed' && !plot.isPlanted ? 'hover:brightness-125' : 
                 activeTool === 'water' && plot.isPlanted && !plot.isWatered ? 'hover:brightness-125' : ''
               }`}
+              style={{ width: 'auto', height: 'auto' }}
             >
               {renderDirtMound(plot.isPlanted, plot.isWatered)}
               
               {/* Tooltip Action Hint */}
               {!plot.isWatered && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 neo-badge bg-white text-xs font-black px-2 py-1 flex items-center gap-1 animate-bounce">
-                  {!plot.isPlanted ? 'Tanam Bibit' : 'Siram Air'}
-                  {!plot.isPlanted ? '🌱' : <Droplets className="w-3 h-3 text-sky-500 fill-current" />}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 neo-badge bg-white text-[8px] md:text-xs font-black px-1.5 py-0.5 flex items-center gap-0.5 animate-bounce">
+                  {!plot.isPlanted ? 'Tanam' : 'Siram'}
+                  {!plot.isPlanted ? '🌱' : <Droplets className="w-2.5 h-2.5 text-sky-500 fill-current" />}
                 </div>
               )}
             </div>

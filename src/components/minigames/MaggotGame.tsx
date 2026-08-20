@@ -104,50 +104,50 @@ export const MaggotGame: React.FC<MaggotGameProps> = ({ onComplete }) => {
   if (step === 'slides') {
     const slide = slides[slideIndex];
     return (
-      <div className="w-full max-w-2xl mx-auto space-y-4 animate-fadeIn">
-        <div className="neo-box-lg bg-white relative overflow-hidden">
+      <div className="w-full max-w-2xl mx-auto p-1 animate-fadeIn minigame-scroll-wrapper overflow-y-auto">
+        <div className="neo-box-lg bg-white relative overflow-hidden p-2.5 md:p-5">
           {/* Slide indicator dots */}
-          <div className="flex justify-center gap-2 mb-4">
+          <div className="flex justify-center gap-1.5 mb-2">
             {slides.map((_, i) => (
               <div
                 key={i}
-                className={`w-3 h-3 rounded-full border-2 border-black transition-all ${
-                  i === slideIndex ? 'bg-yellow-400 scale-125' : i < slideIndex ? 'bg-green-400' : 'bg-gray-200'
+                className={`w-2.5 h-2.5 rounded-full border border-black transition-all ${
+                  i === slideIndex ? 'bg-yellow-400 scale-110' : i < slideIndex ? 'bg-green-400' : 'bg-gray-200'
                 }`}
               />
             ))}
           </div>
-
+ 
           {/* Slide image — real photo */}
-          <div className="relative overflow-hidden rounded-2xl border-4 border-black mb-4" style={{ height: '200px' }}>
+          <div className="relative overflow-hidden rounded-xl border-2 border-black mb-2 h-28 sm:h-36 md:h-48">
             <img
               src={slide.image}
               alt={slide.title}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <h2 className="absolute bottom-3 left-4 right-4 text-white font-black text-xl md:text-2xl drop-shadow-lg">
+            <h2 className="absolute bottom-1.5 left-3 right-3 text-white font-black text-sm md:text-2xl drop-shadow-lg">
               {slide.title}
             </h2>
           </div>
-
+ 
           {/* Content */}
-          <p className="text-base md:text-lg font-semibold text-slate-700 text-center leading-relaxed mb-4 px-2">
+          <p className="text-xs md:text-lg font-semibold text-slate-700 text-center leading-relaxed mb-2 px-1">
             {slide.content}
           </p>
-
+ 
           {/* Fun fact box */}
-          <div className="bg-yellow-50 border-2 border-yellow-400 rounded-xl p-3 mb-5 text-sm font-bold text-yellow-900 text-center">
+          <div className="bg-yellow-50 border border-yellow-400 rounded-lg p-2 mb-3 text-[10px] sm:text-sm font-bold text-yellow-900 text-center leading-tight">
             {slide.fact}
           </div>
-
+ 
           <div className="flex justify-center">
             <button
               onClick={handleNextSlide}
-              className="neo-btn bg-yellow-400 hover:bg-yellow-300 text-black text-lg font-black py-3 px-8 flex items-center gap-2 transform transition-transform hover:scale-105 active:scale-95"
+              className="neo-btn bg-yellow-400 hover:bg-yellow-300 text-black text-xs md:text-lg font-black py-2 px-6 flex items-center gap-1.5 transform transition-transform hover:scale-105 active:scale-95"
             >
               {slideIndex === slides.length - 1 ? '🎮 Mulai Main!' : 'Lanjut'}
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -156,21 +156,21 @@ export const MaggotGame: React.FC<MaggotGameProps> = ({ onComplete }) => {
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-4 animate-fadeIn">
+    <div className="w-full max-w-3xl mx-auto p-1 animate-fadeIn minigame-scroll-wrapper overflow-y-auto">
       {/* Header */}
-      <div className="neo-box bg-lime-50 text-center p-4">
-        <h2 className="text-xl md:text-2xl font-black text-green-800 uppercase mb-1">
+      <div className="neo-box bg-lime-50 text-center p-2 md:p-4">
+        <h2 className="text-xs md:text-2xl font-black text-green-800 uppercase mb-0.5">
           🪱 Kasih Makan Maggotnya!
         </h2>
-        <p className="text-sm md:text-base font-semibold text-slate-700">
-          Pilih <strong className="text-green-700">4 makanan</strong> yang <strong>boleh</strong> dimakan maggot. Hati-hati salah pilih!
+        <p className="text-[10px] md:text-base font-semibold text-slate-700 leading-tight">
+          Pilih <strong className="text-green-700">4 makanan</strong> yang boleh dimakan maggot.
         </p>
-        <div className="flex justify-center gap-3 mt-3">
+        <div className="flex justify-center gap-1.5 mt-2">
           {[0,1,2,3].map(i => (
             <div
               key={i}
-              className={`w-8 h-8 rounded-full border-2 border-black flex items-center justify-center text-sm font-black transition-all ${
-                i < foundItems.length ? 'bg-green-400 scale-110' : 'bg-gray-100'
+              className={`w-6 h-6 rounded-full border border-black flex items-center justify-center text-xs font-black transition-all ${
+                i < foundItems.length ? 'bg-green-400 scale-105' : 'bg-gray-100'
               }`}
             >
               {i < foundItems.length ? '✓' : i + 1}
@@ -181,27 +181,27 @@ export const MaggotGame: React.FC<MaggotGameProps> = ({ onComplete }) => {
 
       {/* Wrong message */}
       {wrongMessage && !isFinished && (
-        <div className="neo-box bg-red-100 border-red-500 text-red-900 p-3 font-bold text-center text-sm md:text-base flex items-center justify-center gap-2">
-          <XCircle className="w-5 h-5 flex-shrink-0" />
+        <div className="neo-box bg-red-100 border-red-500 text-red-900 p-2 font-bold text-center text-[10px] md:text-base flex items-center justify-center gap-1.5 mt-2">
+          <XCircle className="w-4 h-4 flex-shrink-0" />
           {wrongMessage}
         </div>
       )}
 
       {/* Finished celebration */}
       {isFinished ? (
-        <div className="neo-box-lg bg-green-200 text-center py-8 animate-fadeIn">
-          <Sparkles className="w-14 h-14 text-yellow-500 mx-auto mb-3 animate-spin" />
-          <h3 className="text-2xl md:text-3xl font-black text-green-900 mb-2 uppercase">
+        <div className="neo-box-lg bg-green-200 text-center py-4 md:py-8 animate-fadeIn mt-2">
+          <Sparkles className="w-8 h-8 md:w-14 md:h-14 text-yellow-500 mx-auto mb-2 animate-spin" />
+          <h3 className="text-lg md:text-3xl font-black text-green-900 mb-1 uppercase leading-none">
             Hebat Sekali! 🎉
           </h3>
-          <p className="text-base md:text-lg font-bold text-green-800 mb-2">
+          <p className="text-xs md:text-lg font-bold text-green-800 mb-2">
             Kamu berhasil menemukan semua makanan maggot!
           </p>
-          <div className="flex flex-wrap justify-center gap-2 mb-6">
+          <div className="flex flex-wrap justify-center gap-1.5 mb-4">
             {foundItems.map(id => {
               const item = quizItems.find(q => q.id === id)!;
               return (
-                <span key={id} className="bg-white border-2 border-green-700 rounded-full px-3 py-1 text-2xl">
+                <span key={id} className="bg-white border border-green-700 rounded-full px-2 py-0.5 text-lg md:text-2xl">
                   {item.emoji}
                 </span>
               );
@@ -209,14 +209,14 @@ export const MaggotGame: React.FC<MaggotGameProps> = ({ onComplete }) => {
           </div>
           <button
             onClick={() => { sound.playClick(); onComplete(); }}
-            className="neo-btn bg-blue-500 hover:bg-blue-400 text-white text-lg font-black py-3 px-10 flex items-center gap-2 mx-auto"
+            className="neo-btn bg-blue-500 hover:bg-blue-400 text-white text-xs md:text-lg font-black py-2 px-6 flex items-center gap-1.5 mx-auto"
           >
-            <CheckCircle2 className="w-6 h-6" /> Lanjutkan!
+            <CheckCircle2 className="w-4 h-4" /> Lanjutkan!
           </button>
         </div>
       ) : (
-        /* Quiz grid — 4 columns on desktop, 2 on mobile */
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        /* Quiz grid — 4 columns on desktop, 4 columns on mobile landscape as well to keep height low */
+        <div className="grid grid-cols-4 gap-1.5 md:gap-3 mt-2">
           {shuffledItems.map((item) => {
             const isFound = foundItems.includes(item.id);
             const isShaking = shakeId === item.id;
@@ -226,41 +226,41 @@ export const MaggotGame: React.FC<MaggotGameProps> = ({ onComplete }) => {
                 onClick={() => handleItemClick(item)}
                 disabled={isFound || isFinished}
                 className={`
-                  relative neo-box border-4 border-black p-3 h-36 md:h-44
-                  flex flex-col items-center justify-center gap-1
+                  relative neo-box border border-black p-1 md:p-3 h-20 sm:h-28 md:h-44
+                  flex flex-col items-center justify-center gap-0.5
                   transition-all duration-150 select-none
                   ${isFound
                     ? 'bg-green-300 border-green-700 scale-95 opacity-90 cursor-default'
-                    : `${item.color} ${item.bgHover} active:scale-95 hover:-translate-y-1 cursor-pointer`
+                    : `${item.color} ${item.bgHover} active:scale-95 hover:-translate-y-0.5 cursor-pointer`
                   }
                   ${isShaking ? 'animate-[shake_0.6s_ease-in-out] bg-red-200 border-red-500' : ''}
                 `}
               >
                 {/* Found checkmark badge */}
                 {isFound && (
-                  <div className="absolute top-2 right-2 bg-green-700 text-white rounded-full p-0.5">
-                    <Check className="w-3 h-3" />
+                  <div className="absolute top-1 right-1 bg-green-700 text-white rounded-full p-0.25">
+                    <Check className="w-2 h-2" />
                   </div>
                 )}
 
                 {/* Main emoji visual */}
-                <span className={`text-5xl md:text-6xl transition-all ${isFound ? 'grayscale-0' : ''}`} role="img" aria-label={item.label}>
+                <span className={`text-2xl md:text-6xl transition-all ${isFound ? 'grayscale-0' : ''}`} role="img" aria-label={item.label}>
                   {item.emoji}
                 </span>
 
                 {/* Item name */}
-                <span className={`text-center font-black text-xs md:text-sm leading-tight ${isFound ? 'text-green-900' : 'text-slate-800'}`}>
+                <span className={`text-center font-black text-[9px] md:text-sm leading-none ${isFound ? 'text-green-900' : 'text-slate-800'}`}>
                   {item.label}
                 </span>
 
                 {/* Small description */}
-                <span className="text-center text-[10px] md:text-xs text-slate-500 font-medium leading-tight">
+                <span className="text-center text-[7px] md:text-xs text-slate-500 font-medium leading-none hidden sm:block">
                   {item.desc}
                 </span>
 
                 {/* Found indicator */}
                 {isFound && (
-                  <span className="text-green-800 font-black text-xs">✅ Benar!</span>
+                  <span className="text-green-800 font-black text-[8px] md:text-xs">✓ Benar!</span>
                 )}
               </button>
             );

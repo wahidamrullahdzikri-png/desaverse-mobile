@@ -157,48 +157,48 @@ export const HarvestGame: React.FC<HarvestGameProps> = ({ onComplete }) => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col p-3 md:p-4 animate-fadeIn select-none">
+    <div className="w-full h-full flex flex-col p-2 md:p-4 animate-fadeIn select-none minigame-scroll-wrapper overflow-y-auto">
       {/* Header */}
-      <div className="flex flex-wrap sm:flex-row items-center justify-between gap-3 mb-3 bg-white p-3 md:p-4 rounded-2xl border-4 border-black neo-shadow-strong relative">
+      <div className="flex flex-wrap sm:flex-row items-center justify-between gap-3 mb-2 bg-white p-2 md:p-4 rounded-xl border border-black neo-shadow-strong relative flex-shrink-0">
         <div className="flex-1">
-          <h3 className="font-extrabold text-base md:text-xl text-slate-900 flex items-center gap-2">
-            <Timer className="w-6 h-6 text-red-500" />
+          <h3 className="font-extrabold text-sm md:text-xl text-slate-900 flex items-center gap-2 leading-none">
+            <Timer className="w-4 h-4 md:w-6 md:h-6 text-red-500" />
             Ayo Panen Cepat! ({timeLeft}s)
           </h3>
-          <p className="text-xs md:text-sm text-slate-700 font-bold mt-1">
+          <p className="text-[10px] md:text-sm text-slate-700 font-bold mt-0.5 leading-tight">
             Tap sayuran yang muncul sebelum mereka menghilang!
           </p>
         </div>
         
-        <div className="flex gap-2 items-center">
-          <div className="neo-badge bg-blue-300 text-black px-4 py-2 border-4 border-black font-black whitespace-nowrap flex flex-col items-center">
-            <span className="text-[10px] uppercase tracking-wider">Target</span>
-            <div className="flex items-center gap-1">
-              <Target className="w-4 h-4" /> {score} / {targetScore}
+        <div className="flex gap-2 items-center flex-shrink-0">
+          <div className="neo-badge bg-blue-300 text-black px-2.5 py-1 border border-black font-black whitespace-nowrap flex flex-col items-center">
+            <span className="text-[8px] uppercase tracking-wider leading-none">Target</span>
+            <div className="flex items-center gap-0.5 mt-0.5 text-xs md:text-sm">
+              <Target className="w-3.5 h-3.5" /> {score} / {targetScore}
             </div>
           </div>
         </div>
 
         {/* Combo Indicator */}
         {combo >= 3 && (
-          <div className="absolute -top-3 -right-3 md:top-2 md:right-1/3 animate-bounce neo-badge bg-orange-400 text-black px-3 py-1 border-4 border-black font-black flex items-center gap-1 rotate-12 z-20">
-            <Flame className="w-5 h-5 text-red-600 fill-red-500" />
+          <div className="absolute -top-3 -right-2 md:top-2 md:right-1/3 animate-bounce neo-badge bg-orange-400 text-black px-2 py-0.5 border border-black font-black flex items-center gap-1 rotate-12 z-20 text-[9px] md:text-sm">
+            <Flame className="w-3.5 h-3.5 text-red-600 fill-red-500" />
             COMBO x{combo}!
           </div>
         )}
       </div>
 
       {/* Farm Field */}
-      <div className="relative flex-1 flex flex-col overflow-hidden rounded-3xl border-4 border-black shadow-inner min-h-[400px] cursor-crosshair">
+      <div className="relative flex-1 flex flex-col overflow-hidden rounded-2xl border-2 border-black shadow-inner min-h-[165px] cursor-crosshair">
         {/* Sky Background */}
         <div className="absolute inset-x-0 top-0 h-[30%] bg-gradient-to-b from-sky-400 to-sky-200">
-          <div className="absolute top-3 right-6 text-4xl md:text-5xl animate-pulse">☀️</div>
-          <div className="absolute top-8 left-10 text-3xl animate-float-cloud-1">☁️</div>
-          <div className="absolute top-4 left-1/2 text-2xl animate-float-cloud-2 opacity-80">☁️</div>
+          <div className="absolute top-2 right-4 text-2xl md:text-5xl animate-pulse">☀️</div>
+          <div className="absolute top-4 left-6 text-xl animate-float-cloud-1">☁️</div>
+          <div className="absolute top-2 left-1/3 text-lg animate-float-cloud-2 opacity-80">☁️</div>
         </div>
 
         {/* Ground Background */}
-        <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-b from-amber-700 to-amber-900 border-t-8 border-amber-950"></div>
+        <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-b from-amber-700 to-amber-900 border-t-4 border-amber-950"></div>
         
         {/* Farm Rows */}
         <div className="absolute inset-x-0 bottom-0 h-[70%] opacity-30 flex flex-col justify-around py-4">

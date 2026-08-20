@@ -136,26 +136,26 @@ export const TrashCleanupGame: React.FC<TrashCleanupGameProps> = ({ onComplete }
   const isFinished = cleanedCount === 10;
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-2 md:p-4 animate-fadeIn select-none">
-      <div className="neo-box-lg bg-amber-50 p-3 md:p-5 text-center relative overflow-hidden">
+    <div className="w-full max-w-4xl mx-auto p-1.5 md:p-4 animate-fadeIn select-none minigame-scroll-wrapper overflow-y-auto">
+      <div className="neo-box-lg bg-amber-50 p-2 md:p-5 text-center relative overflow-hidden">
         {/* Header Banner */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 mb-3 bg-white p-3 rounded-xl border-2 border-black">
+        <div className="flex flex-row items-center justify-between gap-2 mb-2 bg-white px-2 py-1.5 rounded-xl border border-black game-header-box">
           <div className="text-left">
-            <h3 className="font-extrabold text-base md:text-xl text-slate-900 flex items-center gap-2">
+            <h3 className="font-extrabold text-xs md:text-xl text-slate-900 flex items-center gap-1 leading-none">
               <span>🧹</span> Membersihkan Sampah Jalanan
             </h3>
-            <p className="text-xs md:text-sm text-slate-700 font-bold">
-              ✋ <strong>SERET (DRAG & DROP)</strong> sampah langsung dari jalanan ke tempat sampah! (Atau klik sampah).
+            <p className="text-[9px] md:text-sm text-slate-700 font-bold leading-tight mt-0.5">
+              ✋ <strong>SERET</strong> sampah ke tempat sampah!
             </p>
           </div>
-
-          <div className="neo-badge bg-yellow-300 text-black px-4 py-1 text-sm md:text-base border-2 border-black font-black">
-            Terkumpul: {cleanedCount} / 10 Sampah
+ 
+          <div className="neo-badge bg-yellow-300 text-black px-2 py-0.5 text-[9px] md:text-base border border-black font-black whitespace-nowrap flex-shrink-0">
+            Terkumpul: {cleanedCount}/10
           </div>
         </div>
-
+ 
         {/* Natural Scenery Road Area */}
-        <div className="relative w-full h-[45vh] min-h-[190px] max-h-[380px] md:h-96 bg-gradient-to-b from-amber-200 via-amber-300 to-amber-700 border-4 border-black rounded-2xl overflow-hidden shadow-inner">
+        <div className="cleanup-road relative w-full h-[40vh] min-h-[190px] max-h-[380px] md:h-96 bg-gradient-to-b from-amber-200 via-amber-300 to-amber-700 border-2 border-black rounded-xl overflow-hidden shadow-inner">
           {/* Muddy Road Lines */}
           <div className="absolute inset-x-0 bottom-2 md:bottom-10 h-24 md:h-40 bg-stone-700 border-y-4 border-dashed border-stone-500 flex items-center justify-center">
             <div className="w-full border-t-4 border-dashed border-yellow-400 opacity-60"></div>

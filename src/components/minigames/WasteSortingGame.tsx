@@ -172,27 +172,27 @@ export const WasteSortingGame: React.FC<WasteSortingGameProps> = ({ onComplete }
   const isFinished = items.length > 0 && currentIndex >= items.length;
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-2 md:p-4 animate-fadeIn select-none">
-      <div className="neo-box-lg bg-amber-50 p-3 md:p-5 text-center relative overflow-hidden">
+    <div className="w-full max-w-4xl mx-auto p-1.5 md:p-4 animate-fadeIn select-none minigame-scroll-wrapper overflow-y-auto">
+      <div className="neo-box-lg bg-amber-50 p-2 md:p-5 text-center relative overflow-hidden">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 mb-3 bg-white p-3 rounded-xl border-2 border-black">
+        <div className="flex flex-row items-center justify-between gap-2 mb-2 bg-white px-2 py-1 md:p-3 rounded-xl border-2 border-black game-header-box">
           <div className="text-left">
-            <h3 className="font-extrabold text-base md:text-xl text-slate-900 flex items-center gap-2">
+            <h3 className="font-extrabold text-xs md:text-xl text-slate-900 flex items-center gap-1 leading-tight">
               ♻️ Pilah Sampah Bersama Yanti!
             </h3>
-            <p className="text-xs md:text-sm text-slate-700 font-bold">
-              ✋ <strong>SERET</strong> sampah ke tong yang tepat, atau <strong>KLIK</strong> tong-nya!
+            <p className="text-[8px] md:text-sm text-slate-700 font-bold leading-tight">
+              ✋ <strong>SERET</strong> atau <strong>KLIK</strong> tong yang tepat!
             </p>
           </div>
-          <div className="neo-badge bg-emerald-300 text-black px-4 py-1 text-sm md:text-base border-2 border-black font-black">
-            {sortedCount} / {items.length} Sampah
+          <div className="neo-badge bg-emerald-300 text-black px-2 py-0.5 text-[9px] md:text-base border-2 border-black font-black whitespace-nowrap flex-shrink-0">
+            {sortedCount} / {items.length}
           </div>
         </div>
 
         {/* FEEDBACK BANNER */}
         {feedback && (
           <div
-            className={`p-3 rounded-xl font-extrabold text-base mb-3 border-2 border-black ${
+            className={`px-2 py-1 rounded-lg font-extrabold text-[10px] md:text-base mb-2 border-2 border-black ${
               feedback.isError ? 'bg-rose-300 text-black' : 'bg-emerald-300 text-black'
             }`}
           >
@@ -201,8 +201,8 @@ export const WasteSortingGame: React.FC<WasteSortingGameProps> = ({ onComplete }
         )}
 
         {!isFinished && currentItem ? (
-          <div className="flex flex-col items-center gap-5">
-            {/* ITEM TO SORT — clean float without box */}
+          <div className="flex flex-col items-center gap-2 md:gap-5">
+            {/* ITEM TO SORT */}
             <div
               draggable
               onDragStart={(e) => { e.dataTransfer.setData('text/plain', 'waste_item'); sound.playClick(); }}
@@ -218,18 +218,17 @@ export const WasteSortingGame: React.FC<WasteSortingGameProps> = ({ onComplete }
               }}
               className={`flex flex-col items-center justify-center cursor-grab active:cursor-grabbing transition-transform ${shake ? 'animate-bounce' : 'hover:scale-110'}`}
             >
-              {/* Big floating emoji — NO box around it */}
-              <div className="text-8xl md:text-9xl drop-shadow-[0_6px_12px_rgba(0,0,0,0.35)] animate-bounce-subtle leading-none">
+              <div className="waste-item-emoji text-5xl md:text-8xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] animate-bounce-subtle leading-none">
                 {currentItem.emoji}
               </div>
-              <h4 className="font-black text-xl md:text-2xl text-slate-900 mt-2">{currentItem.name}</h4>
-              <p className="text-xs text-slate-800 font-extrabold bg-amber-200 px-3 py-1 rounded-full border-2 border-black shadow-[2px_2px_0px_#000] mt-1">
+              <h4 className="font-black text-sm md:text-2xl text-slate-900 mt-1">{currentItem.name}</h4>
+              <p className="text-[8px] md:text-xs text-slate-800 font-extrabold bg-amber-200 px-2 py-0.5 rounded-full border border-black shadow-[1px_1px_0px_#000] mt-0.5">
                 {currentItem.description}
               </p>
             </div>
 
-            {/* 3 TRASH BINS — visual tong sampah shape, no square emoji icons */}
-            <div className="grid grid-cols-3 gap-3 w-full mt-1">
+            {/* 3 TRASH BINS */}
+            <div className="grid grid-cols-3 gap-2 md:gap-3 w-full mt-1">
               {(['organik', 'anorganik', 'b3'] as const).map((cat, i) => {
                 const refs = [binOrganikRef, binAnorganikRef, binB3Ref];
                 const cfg = BIN_CONFIG[cat];
@@ -242,43 +241,39 @@ export const WasteSortingGame: React.FC<WasteSortingGameProps> = ({ onComplete }
                     onDragLeave={handleDragLeave}
                     onDrop={(e) => handleDrop(e, cat)}
                     onClick={() => handleSortItem(cat)}
-                    className={`flex flex-col items-center cursor-pointer transition-all duration-150 rounded-2xl p-2 border-2 border-black
+                    className={`flex flex-col items-center cursor-pointer transition-all duration-150 rounded-xl p-1 md:p-2 border-2 border-black
                       ${isActive ? `${cfg.bgActive} scale-110 ring-4 ${cfg.ringColor} shadow-lg` : `${cfg.bg} hover:scale-105 hover:brightness-105`}`}
                   >
-                    {/* Trash Bin SVG-like illustration using CSS */}
-                    <div className="relative w-16 md:w-20 h-20 md:h-24 flex flex-col items-center justify-end">
+                    {/* Trash Bin */}
+                    <div className="waste-bin-container relative w-10 md:w-20 h-14 md:h-24 flex flex-col items-center justify-end">
                       {/* Lid */}
                       <div
-                        className={`absolute top-0 w-full h-5 rounded-t-lg border-2 border-black transition-transform ${isActive ? '-translate-y-2' : ''}`}
+                        className={`waste-bin-lid absolute top-0 w-full h-4 md:h-5 rounded-t-lg border-2 border-black transition-transform ${isActive ? '-translate-y-1' : ''}`}
                         style={{ backgroundColor: cfg.lidColor }}
                       />
-                      {/* Handle on lid */}
+                      {/* Handle */}
                       <div
-                        className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 w-6 h-3 rounded-full border-2 border-black"
+                        className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1.5 w-4 h-2 md:w-6 md:h-3 rounded-full border-2 border-black"
                         style={{ backgroundColor: cfg.lidColor }}
                       />
-                      {/* Bin body */}
+                      {/* Body */}
                       <div
-                        className="w-full h-16 md:h-20 rounded-b-xl border-2 border-t-0 border-black flex items-center justify-center relative mt-4"
+                        className="waste-bin-body w-full h-10 md:h-20 rounded-b-xl border-2 border-t-0 border-black flex items-center justify-center relative mt-3"
                         style={{ backgroundColor: cfg.bodyColor }}
                       >
-                        {/* Vertical lines on bin */}
-                        <div className="absolute inset-0 flex justify-evenly items-stretch px-2 opacity-30">
+                        <div className="absolute inset-0 flex justify-evenly items-stretch px-1 opacity-30">
                           {[0,1,2].map(n => (
-                            <div key={n} className="w-0.5 bg-black rounded-full my-2" />
+                            <div key={n} className="w-0.5 bg-black rounded-full my-1" />
                           ))}
                         </div>
-                        {/* Drop zone indicator */}
-                        {isActive && (
-                          <div className="text-3xl animate-bounce">⬇️</div>
-                        )}
+                        {isActive && <div className="text-xl md:text-3xl animate-bounce">⬇️</div>}
                       </div>
                     </div>
 
                     {/* Label */}
-                    <div className={`mt-2 text-center ${cfg.textColor}`}>
-                      <span className="font-black text-xs md:text-sm block leading-tight">{cfg.label}</span>
-                      <span className="text-[9px] md:text-[11px] font-bold block opacity-90 leading-tight">{cfg.sublabel}</span>
+                    <div className={`mt-1 text-center ${cfg.textColor}`}>
+                      <span className="font-black text-[7px] md:text-sm block leading-tight">{cfg.label}</span>
+                      <span className="text-[6px] md:text-[11px] font-bold block opacity-90 leading-tight hidden md:block">{cfg.sublabel}</span>
                     </div>
                   </div>
                 );
@@ -287,24 +282,24 @@ export const WasteSortingGame: React.FC<WasteSortingGameProps> = ({ onComplete }
           </div>
         ) : (
           /* COMPLETION MODAL */
-          <div className="bg-emerald-300 p-6 md:p-8 rounded-2xl border-4 border-black text-center animate-fadeIn">
-            <Sparkles className="w-16 h-16 text-yellow-300 mx-auto mb-2 animate-spin" />
-            <h2 className="font-extrabold text-2xl md:text-3xl text-slate-900 mb-2">
+          <div className="bg-emerald-300 p-4 md:p-8 rounded-2xl border-4 border-black text-center animate-fadeIn">
+            <Sparkles className="w-10 h-10 md:w-16 md:h-16 text-yellow-300 mx-auto mb-2 animate-spin" />
+            <h2 className="font-extrabold text-lg md:text-3xl text-slate-900 mb-1">
               Yeayyy! Semua Sampah Sudah Dipilah! 🎉
             </h2>
-            <p className="text-sm md:text-base font-bold text-slate-900 mb-2 max-w-lg mx-auto">
+            <p className="text-xs md:text-base font-bold text-slate-900 mb-2 max-w-lg mx-auto">
               Hebat! Kamu berhasil memilah semua sampah dengan benar!
             </p>
-            <p className="text-sm font-bold text-slate-800 mb-6 max-w-lg mx-auto bg-yellow-200 p-3 rounded-xl border-2 border-black">
-              🌿 Sampah organik siap jadi kompos & pakan maggot!<br/>
+            <p className="text-xs font-bold text-slate-800 mb-4 max-w-lg mx-auto bg-yellow-200 p-2 rounded-xl border-2 border-black">
+              🌿 Sampah organik siap jadi kompos &amp; pakan maggot!<br/>
               ♻️ Sampah anorganik siap ke Bank Sampah PKK!<br/>
               ⚠️ Sampah B3 dibuang ke tempat khusus!
             </p>
             <button
               onClick={onComplete}
-              className="neo-btn bg-yellow-300 hover:bg-yellow-400 text-black px-8 py-3 text-lg md:text-xl flex items-center gap-2 mx-auto"
+              className="neo-btn bg-yellow-300 hover:bg-yellow-400 text-black px-6 py-2 md:px-8 md:py-3 text-sm md:text-xl flex items-center gap-2 mx-auto"
             >
-              <CheckCircle2 className="w-6 h-6" /> Lanjut ke Bank Sampah PKK
+              <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6" /> Lanjut ke Bank Sampah PKK
             </button>
           </div>
         )}

@@ -227,11 +227,21 @@
   animation: phone-rotate 2.5s infinite ease-in-out;
 }
 
+/* ── SAFE AREA INSET (notch/cutout support for PWA) ── */
+html, body, #root {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
 /* Strict Mobile Landscape Height Overrides (height <= 500px) */
 @media (max-height: 500px) and (orientation: landscape) {
-  /* Header HUD overrides */
+
+  /* ── HEADER HUD ── */
   header {
-    height: 32px !important;
+    height: 30px !important;
+    min-height: 30px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     border-bottom-width: 1.5px !important;
@@ -240,257 +250,126 @@
     height: 100% !important;
   }
   header button, header .neo-btn {
-    padding: 2px 4px !important;
-    font-size: 9px !important;
-    border-width: 1.5px !important;
-    box-shadow: 1px 1px 0px #000000 !important;
+    padding: 1px 4px !important;
+    font-size: 8px !important;
+    border-width: 1px !important;
+    box-shadow: 1px 1px 0px #000 !important;
     border-radius: 4px !important;
   }
   header .neo-badge {
     padding: 1px 3px !important;
-    font-size: 8px !important;
-    border-width: 1px !important;
-    box-shadow: 1px 1px 0px #000000 !important;
+    font-size: 7px !important;
   }
-  /* Hide the text of KKN guide to prevent vertical stretching */
-  header button span {
-    display: none !important;
-  }
-  /* Value bars in HUD */
+  header button span { display: none !important; }
   header div[title] {
-    padding: 1px 3px !important;
+    padding: 1px 2px !important;
     border-width: 1px !important;
-    box-shadow: 1px 1px 0px #000000 !important;
-    border-radius: 4px !important;
-    gap: 2px !important;
-  }
-  header div[title] span {
-    font-size: 9px !important;
-  }
-  header div[title] div {
+    box-shadow: 1px 1px 0px #000 !important;
+    border-radius: 3px !important;
     gap: 1px !important;
   }
+  header div[title] span { font-size: 8px !important; }
+  header div[title] div { gap: 1px !important; }
   header div[title] div div {
     width: 2px !important;
-    height: 6px !important;
+    height: 5px !important;
     border-width: 0.5px !important;
   }
 
-  /* Dialogue Box overrides */
+  /* ── NEO-BOX GLOBAL SHRINK ── */
   .neo-box-lg {
     border-width: 1.5px !important;
-    box-shadow: 1.5px 1.5px 0px #000000 !important;
+    box-shadow: 1.5px 1.5px 0px #000 !important;
     border-radius: 8px !important;
-    padding: 6px 12px !important;
+    padding: 5px 10px !important;
   }
-  /* Name badge speaker */
   .neo-badge.bg-yellow-300 {
-    font-size: 9px !important;
-    padding: 1px 4px !important;
-    border-width: 1.5px !important;
-  }
-  /* Page indicator number */
-  .neo-box-lg span.text-\[7px\] {
     font-size: 8px !important;
-    padding: 1px 3px !important;
+    padding: 1px 4px !important;
     border-width: 1px !important;
   }
-  /* Dialog speech text */
+
+  /* ── DIALOGUE BOX ── */
   .neo-box-lg p {
-    font-size: 11px !important;
-    line-height: 1.25 !important;
+    font-size: 10px !important;
+    line-height: 1.3 !important;
     min-height: 0 !important;
     margin-top: 2px !important;
   }
-  /* Next button in dialogue */
   .neo-box-lg button.bg-emerald-400 {
     padding: 3px 8px !important;
-    font-size: 10px !important;
-    border-width: 1.5px !important;
-    box-shadow: 1.5px 1.5px 0px #000000 !important;
-    border-radius: 6px !important;
+    font-size: 9px !important;
+    border-width: 1px !important;
   }
-
-  /* Choice button overrides */
-  .neo-box-lg .grid {
-    gap: 6px !important;
-    margin-top: 4px !important;
-  }
+  .neo-box-lg .grid { gap: 4px !important; margin-top: 3px !important; }
   .neo-box-lg .grid button {
-    padding: 4px 8px !important;
-    border-width: 1.5px !important;
-    box-shadow: 1.5px 1.5px 0px #000000 !important;
-    border-radius: 6px !important;
-  }
-  /* Choice icon */
-  .neo-box-lg .grid span.text-xl {
-    font-size: 16px !important;
-    padding: 2px !important;
-    border-width: 1px !important;
-    border-radius: 4px !important;
-  }
-  /* Choice option letter badge */
-  .neo-box-lg .grid span.neo-badge {
-    font-size: 9px !important;
-    padding: 1px 3px !important;
-    border-width: 1px !important;
-  }
-  /* Choice label header */
-  .neo-box-lg .grid h4 {
-    font-size: 10px !important;
-    line-height: 1.1 !important;
-  }
-  /* Choice description */
-  .neo-box-lg .grid p {
-    font-size: 8px !important;
-    line-height: 1.1 !important;
-    margin-top: 1px !important;
-  }
-  /* Choice warning badge */
-  .neo-box-lg .grid span.inline-block {
-    font-size: 7px !important;
-    padding: 1px 3px !important;
-    margin-top: 2px !important;
-    border-width: 1px !important;
-  }
-
-  /* Avatar in Dialog */
-  .neo-box-lg .flex-shrink-0.scale-50 {
-    scale: 0.65 !important;
-  }
-
-  /* --- Main Menu overrides to prevent scrolling --- */
-  .relative.flex-1.w-full.min-h-0.h-full.bg-gradient-to-b {
-    padding-top: 4px !important;
-    padding-bottom: 4px !important;
-    overflow: hidden !important;
-  }
-  .text-center.pt-2.md\:pt-6 {
-    padding-top: 2px !important;
-  }
-  .text-center.pt-2.md\:pt-6 h1 {
-    font-size: 22px !important;
-    margin-bottom: 2px !important;
-  }
-  .text-center.pt-2.md\:pt-6 h2 {
-    font-size: 10px !important;
-    margin-top: 0px !important;
-  }
-  .text-center.pt-2.md\:pt-6 p {
-    font-size: 8px !important;
-    margin-top: 1px !important;
-  }
-  /* Mascot card box */
-  .relative.z-10.my-1.md\:my-4 {
-    margin-top: 2px !important;
-    margin-bottom: 2px !important;
-  }
-  .relative.z-10.my-1.md\:my-4 .neo-box-lg {
     padding: 3px 6px !important;
-    gap: 4px !important;
-  }
-  .relative.z-10.my-1.md\:my-4 span {
-    font-size: 16px !important;
-  }
-  .relative.z-10.my-1.md\:my-4 h3 {
+    border-width: 1px !important;
     font-size: 9px !important;
   }
-  .relative.z-10.my-1.md\:my-4 p {
-    font-size: 7px !important;
-  }
-  /* Floating Cloud / Sun decorations */
-  .absolute.top-6.left-12,
-  .absolute.top-10.right-16,
-  .absolute.top-24.left-1\/4 {
-    display: none !important;
-  }
-  /* Buttons spacing and height */
-  .w-full.max-w-xs.space-y-1\.5 {
-    gap: 4px !important;
-    margin-top: 2px !important;
-  }
-  .w-full.max-w-xs.space-y-1\.5 .flex.gap-1\.5 button,
-  .w-full.max-w-xs.space-y-1\.5 .grid button {
-    padding-top: 4px !important;
-    padding-bottom: 4px !important;
-    font-size: 9px !important;
+  .neo-box-lg .grid h4 { font-size: 9px !important; line-height: 1.1 !important; }
+  .neo-box-lg .grid p { font-size: 7px !important; line-height: 1.1 !important; }
+
+  /* ── MAIN MENU ── */
+  .main-menu-wrapper {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
   }
 
-  /* --- Minigame container overrides to prevent scrolling --- */
-  .relative.w-full.h-full.flex.flex-col.overflow-y-auto {
-    overflow: hidden !important;
-  }
-  .flex-shrink-0.w-full.max-w-5xl {
-    padding: 2px !important;
-  }
-  
-  /* Waste Sorting Game Overrides */
-  .text-8xl {
-    font-size: 3rem !important; /* Shrunk floating item emoji */
-  }
-  .text-8xl + h4 {
-    font-size: 11px !important;
-    margin-top: 1px !important;
-  }
-  .text-8xl + h4 + p {
-    font-size: 8px !important;
-    margin-top: 1px !important;
-    padding: 1px 3px !important;
-  }
-  /* Waste Bins shape sizing */
-  .relative.w-16.md\:w-20.h-20.md\:h-24 {
-    height: 4.5rem !important;
-  }
-  .relative.w-16.md\:w-20.h-20.md\:h-24 .w-full.h-16 {
-    height: 3rem !important;
-  }
-  .relative.w-16.md\:w-20.h-20.md\:h-24 .absolute.top-0.w-full.h-5 {
-    height: 12px !important;
-  }
-  /* Bins labels text sizes */
-  .mt-2.text-center.text-white span.font-black {
-    font-size: 9px !important;
-  }
-  .mt-2.text-center.text-white span.text-\[9px\] {
-    font-size: 7px !important;
+  /* ── MINIGAME WRAPPER — allow scroll, don't block it ── */
+  .minigame-scroll-wrapper {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
-  /* Interactive Quiz Overrides */
-  .neo-box-lg h3 {
-    font-size: 11px !important;
-    margin-bottom: 4px !important;
+  /* ── WASTE SORTING GAME ── */
+  .waste-item-emoji {
+    font-size: 2.5rem !important;
   }
-  .grid.grid-cols-1.md\:grid-cols-2.gap-4 {
-    gap: 4px !important;
+  .waste-bin-container {
+    height: 3.5rem !important;
   }
-  .grid.grid-cols-1.md\:grid-cols-2.gap-4 button {
+  .waste-bin-body {
+    height: 2.5rem !important;
+  }
+  .waste-bin-lid {
+    height: 10px !important;
+  }
+
+  /* ── PLANTING / HARVEST / MAGGOT GAME ── */
+  .game-grid-cell {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
+  .game-plot-area {
+    min-height: 0 !important;
+    padding: 6px !important;
+  }
+  .game-tool-btn {
+    padding: 3px 8px !important;
+    font-size: 9px !important;
+  }
+  .game-header-box {
     padding: 4px 8px !important;
-    font-size: 9px !important;
   }
+  .game-header-box h3 { font-size: 11px !important; }
+  .game-header-box p { font-size: 8px !important; }
 
-  /* Planting Game, Harvest Game, Maggot Game grid and container */
-  .grid.grid-cols-5 {
-    gap: 4px !important;
-  }
-  .w-20.h-20 {
-    width: 2.8rem !important;
-    height: 2.8rem !important;
-  }
+  /* ── INTERACTIVE QUIZ ── */
+  .quiz-question { font-size: 10px !important; margin-bottom: 4px !important; }
+  .quiz-choice-btn { padding: 3px 6px !important; font-size: 8px !important; }
 
-  /* PlasticCraftGame: outer wrapper no extra padding/scroll */
-  .bg-amber-50.p-1\.5 {
-    padding: 4px !important;
-    overflow: hidden !important;
-  }
-  /* PlasticCraftGame: bottle pick buttons */
-  .neo-btn.p-1\.5 {
-    padding: 4px !important;
-  }
-  /* PlasticCraftGame: pot canvas in decorate stage */
-  .w-28.h-24 {
-    width: 5.5rem !important;
-    height: 4.5rem !important;
-  }
+  /* ── PLASTIC CRAFT GAME ── */
+  .craft-header { padding: 3px 6px !important; }
+  .craft-header h3 { font-size: 9px !important; }
+  .craft-header p { font-size: 7px !important; }
+  .craft-bottle-preview { height: 30vh !important; min-height: 140px !important; max-height: 220px !important; }
+
+  /* ── TRASH CLEANUP GAME ── */
+  .cleanup-road { height: 38vh !important; min-height: 150px !important; max-height: 260px !important; }
+
+  /* ── ENDING SCREEN ── */
+  .ending-container { gap: 6px !important; padding: 6px !important; }
+  .ending-title { font-size: 14px !important; }
+  .ending-stat-box { padding: 4px 6px !important; font-size: 9px !important; }
 }
-
-

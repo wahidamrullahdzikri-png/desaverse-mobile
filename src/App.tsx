@@ -6,6 +6,7 @@ import { MainMenu } from './components/MainMenu';
 import { SceneRenderer } from './components/SceneRenderer';
 import { FacilitatorDrawer } from './components/FacilitatorDrawer';
 import { EndingView } from './components/EndingView';
+import { InstallPWABanner } from './components/InstallPWABanner';
 import { sound } from './utils/audio';
 
 export default function App() {
@@ -203,6 +204,9 @@ export default function App() {
           onJumpToScene={handleJumpToScene}
         />
       </div>
+
+      {/* PWA Install Banner — shows on mobile browsers */}
+      <InstallPWABanner />
     </div>
   );
 }
