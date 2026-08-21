@@ -14,6 +14,7 @@ export const WelcomeInstallModal: React.FC<WelcomeInstallModalProps> = ({ onCont
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
+  const [isInstalling, setIsInstalling] = useState(false);
 
   useEffect(() => {
     // 1. Check if already running in PWA standalone mode
@@ -56,8 +57,8 @@ export const WelcomeInstallModal: React.FC<WelcomeInstallModalProps> = ({ onCont
       await deferredPrompt.prompt();
       const result = await deferredPrompt.userChoice;
       if (result.outcome === 'accepted') {
-        // App is installing, close modal
-        onContinueToBrowser();
+        // App is installing, show exit instructions
+        setIsInstalling(true);
       }
       setDeferredPrompt(null);
     } else {
@@ -66,6 +67,28 @@ export const WelcomeInstallModal: React.FC<WelcomeInstallModalProps> = ({ onCont
   };
 
   if (!showModal) return null;
+
+  if (isInstalling) {
+    return (
+      <div className="fixed inset-0 bg-stone-900 z-[99999] flex items-center justify-center p-4 select-none">
+        <div className="neo-box-lg bg-amber-50 w-full max-w-md p-6 text-center flex flex-col items-center gap-4 animate-fadeIn shadow-[8px_8px_0px_#000]">
+          <div className="w-16 h-16 border-4 border-black border-t-emerald-500 rounded-full animate-spin mb-2" />
+          <h2 className="font-extrabold text-xl text-slate-900 leading-tight">
+            DesaVerse Sedang Dipasang! 🚀
+          </h2>
+          <div className="text-xs font-bold text-slate-700 leading-relaxed bg-white border-2 border-black rounded-xl p-4 text-left space-y-2.5">
+            <p>Aplikasi sedang ditambahkan ke layar utama HP kamu.</p>
+            <p><strong>Langkah berikutnya:</strong></p>
+            <ol className="list-decimal pl-4 space-y-1">
+              <li>Keluar/tutup browser Google Chrome ini sekarang.</li>
+              <li>Cari ikon aplikasi <strong>DesaVerse</strong> di layar utama/beranda HP kamu.</li>
+              <li>Klik ikon tersebut untuk masuk ke dalam game secara otomatis dengan layar penuh sejati! 🎮</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 bg-stone-900 z-[99999] flex items-center justify-center p-4 select-none">
