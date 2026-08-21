@@ -6,7 +6,7 @@ import { MainMenu } from './components/MainMenu';
 import { SceneRenderer } from './components/SceneRenderer';
 import { FacilitatorDrawer } from './components/FacilitatorDrawer';
 import { EndingView } from './components/EndingView';
-import { InstallPWABanner } from './components/InstallPWABanner';
+import { WelcomeInstallModal } from './components/WelcomeInstallModal';
 import { sound } from './utils/audio';
 
 export default function App() {
@@ -24,6 +24,7 @@ export default function App() {
   });
 
   const [isPortrait, setIsPortrait] = useState(window.innerHeight > window.innerWidth);
+  const [hasChosenBrowser, setHasChosenBrowser] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -110,8 +111,13 @@ export default function App() {
 
   return (
     <div className="fixed inset-0 overflow-hidden flex items-center justify-center bg-stone-900 select-none">
-      {/* Orientation Blocker */}
-      {isPortrait && (
+      {/* 1. Welcome Install / Browser choice Modal for mobile browsers */}
+      {!hasChosenBrowser && (
+        <WelcomeInstallModal onContinueToBrowser={() => setHasChosenBrowser(true)} />
+      )}
+
+      {/* Orientation Blocker (Only shown if user chose browser option and HP is portrait) */}
+      {hasChosenBrowser && isPortrait && (
         <div className="fixed inset-0 bg-stone-950 text-white z-[9999] flex flex-col items-center justify-center p-6 text-center animate-fadeIn">
           {/* Animated SVG Phone */}
           <div className="relative w-32 h-32 flex items-center justify-center mb-4">
@@ -204,9 +210,6 @@ export default function App() {
           onJumpToScene={handleJumpToScene}
         />
       </div>
-
-      {/* PWA Install Banner — shows on mobile browsers */}
-      <InstallPWABanner />
     </div>
   );
 }
