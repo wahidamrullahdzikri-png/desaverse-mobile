@@ -495,15 +495,17 @@ export const PlasticCraftGame: React.FC<PlasticCraftGameProps> = ({ onComplete }
 
             {/* Pot + plant preview */}
             {selectedPlant && (
-              <div className="flex items-center gap-2 animate-fadeIn">
-                <div
-                  className="text-4xl md:text-6xl transition-all duration-700"
-                  style={{ transform: plantGrowing ? 'translateY(0)' : 'translateY(20px)', opacity: plantGrowing ? 1 : 0 }}
-                >
-                  {PLANTS.find(p => p.type === selectedPlant)?.emoji}
-                </div>
-                <div className="w-20 h-16 md:w-36 md:h-28">
-                  <PotSVG fillColor={potColor} stickers={stickers} />
+              <div className="flex items-center gap-2 animate-fadeIn bg-white/40 p-1 md:p-2 rounded-xl border border-dashed border-amber-300">
+                <div className="relative w-20 h-20 md:w-36 md:h-36 flex flex-col items-center justify-end">
+                  <div
+                    className="text-3xl md:text-6xl z-10 transition-all duration-700 -mb-2 md:-mb-4"
+                    style={{ transform: plantGrowing ? 'translateY(0)' : 'translateY(15px)', opacity: plantGrowing ? 1 : 0 }}
+                  >
+                    {PLANTS.find(p => p.type === selectedPlant)?.emoji}
+                  </div>
+                  <div className="w-20 h-14 md:w-32 md:h-24 z-0">
+                    <PotSVG fillColor={potColor} stickers={stickers} />
+                  </div>
                 </div>
                 <p className="font-black text-green-700 text-xs md:text-base animate-bounce">Tumbuh... 🌱</p>
               </div>
@@ -523,13 +525,15 @@ export const PlasticCraftGame: React.FC<PlasticCraftGameProps> = ({ onComplete }
 
             <div className="grid grid-cols-2 gap-2 md:gap-4 w-full max-w-xs md:max-w-lg">
               {/* Your pot */}
-              <div className="bg-white border border-black rounded-xl p-2 md:p-4 flex flex-col items-center gap-1 md:gap-2">
-                <p className="font-black text-[9px] md:text-xs text-slate-500 uppercase leading-none">Pot Buatanmu</p>
-                <div className="text-3xl md:text-5xl">
-                  {PLANTS.find(p => p.type === selectedPlant)?.emoji}
-                </div>
-                <div className="w-20 h-14 md:w-32 md:h-24">
-                  <PotSVG fillColor={potColor} stickers={stickers} />
+              <div className="bg-white border border-black rounded-xl p-2 md:p-4 flex flex-col items-center relative h-32 md:h-52 justify-end">
+                <p className="font-black text-[9px] md:text-xs text-slate-500 uppercase leading-none absolute top-2">Pot Buatanmu</p>
+                <div className="relative w-20 h-20 md:w-32 md:h-32 flex flex-col items-center justify-end">
+                  <div className="text-3xl md:text-5xl -mb-2.5 md:-mb-5.5 z-10 animate-bounce-subtle">
+                    {PLANTS.find(p => p.type === selectedPlant)?.emoji}
+                  </div>
+                  <div className="w-20 h-14 md:w-32 md:h-24 z-0">
+                    <PotSVG fillColor={potColor} stickers={stickers} />
+                  </div>
                 </div>
               </div>
               {/* Real photo */}

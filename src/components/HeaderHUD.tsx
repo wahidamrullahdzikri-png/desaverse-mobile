@@ -88,11 +88,12 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
     <header className="w-full bg-yellow-300 border-b-2 border-black px-1.5 py-0 h-8 sm:h-9 md:h-14 flex items-center shadow-[0px_2px_0px_#000] z-30 relative">
       <div className="max-w-7xl w-full mx-auto flex items-center justify-between gap-1 h-full">
         {/* Logo & Act Badge */}
-        <div className="flex items-center gap-1">
-          <div className="neo-btn bg-white px-1 py-0.5 md:px-3 md:py-1 text-[10px] md:text-base font-extrabold text-slate-900 tracking-wider flex items-center gap-0.5 md:gap-1.5">
-            <span className="text-yellow-500 text-xs md:text-lg">🌾</span> <span className="hidden sm:inline">DESAVERSE</span>
+        <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5">
+            <img src="/images/logo_desaverse.jpg" alt="DesaVerse Logo" className="w-5 h-5 md:w-8 md:h-8 object-cover rounded-full border border-black" />
+            <span className="font-extrabold text-[10px] md:text-lg text-slate-950 font-baloo tracking-tight">DESAVERSE</span>
           </div>
-          <span className="neo-badge bg-amber-400 text-slate-900 px-1 py-0.25 text-[8px] md:text-xs">
+          <span className="neo-badge bg-amber-400 text-slate-900 px-1 py-0.25 text-[7px] md:text-xs">
             B{act}
           </span>
         </div>

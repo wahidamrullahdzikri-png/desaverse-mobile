@@ -204,6 +204,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
       case 'chickens_maggot_real_bg': return '/images/bg_chickens_maggot_real.jpg';
       case 'sampah_botol_real_bg': return '/images/bg_sampah_botol_real.jpg';
       case 'maggot_close_up_bg': return '/images/maggot_real.jpg';
+      case 'pot_bunga_real_bg': return '/images/pot_bunga_real.jpg';
       default: return '';
     }
   };

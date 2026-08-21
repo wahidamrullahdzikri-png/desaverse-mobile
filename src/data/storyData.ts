@@ -901,7 +901,7 @@ export const STORY_SCENES: Record<string, SceneData> = {
     title: 'Hasil Karya Bermanfaat',
     category: 'story',
     act: 4,
-    background: 'village_clean',
+    background: 'pot_bunga_real_bg',
     nextSceneId: 'SC-QUIZ',
     dialogues: [
       {

@@ -43,7 +43,7 @@ export interface SceneData {
   title: string;
   category: SceneCategory;
   act: 1 | 2 | 3 | 4;
-  background: 'village_dirty' | 'village_clean' | 'bank_sampah' | 'toko' | 'kebun' | 'sawah' | 'umkm' | 'balai_desa' | 'splash' | 'kebun_lebat' | 'maggot_real_bg' | 'chickens_maggot_real_bg' | 'sampah_botol_real_bg' | 'maggot_close_up_bg';
+  background: 'village_dirty' | 'village_clean' | 'bank_sampah' | 'toko' | 'kebun' | 'sawah' | 'umkm' | 'balai_desa' | 'splash' | 'kebun_lebat' | 'maggot_real_bg' | 'chickens_maggot_real_bg' | 'sampah_botol_real_bg' | 'maggot_close_up_bg' | 'pot_bunga_real_bg';
   dialogues: DialogueLine[];
   choices?: ChoiceOption[];
   miniGameType?: MiniGameType;

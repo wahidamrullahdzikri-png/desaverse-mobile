@@ -8,7 +8,7 @@ interface HarvestGameProps {
 
 // SVG Vegetable Components
 const CabaiSVG = () => (
-  <svg viewBox="0 0 40 80" className="w-12 h-24 md:w-16 md:h-32 drop-shadow-lg pointer-events-none">
+  <svg viewBox="0 0 40 80" className="w-7 h-14 md:w-16 md:h-32 drop-shadow-lg pointer-events-none">
     <path d="M 20 5 Q 18 0 20 -2 Q 22 0 20 5" fill="#22C55E" stroke="#000" strokeWidth="1.5" />
     <path d="M 16 8 Q 14 5 18 3 L 22 3 Q 26 5 24 8 Z" fill="#16A34A" stroke="#000" strokeWidth="1.5" />
     <path d="M 16 8 Q 14 30 12 50 Q 11 65 15 75 Q 18 80 20 78 Q 22 75 20 65 Q 18 50 20 30 Q 22 50 24 65 Q 26 75 24 78 Q 26 80 28 75 Q 30 65 28 50 Q 26 30 24 8 Z" fill="#EF4444" stroke="#000" strokeWidth="2" />
@@ -17,7 +17,7 @@ const CabaiSVG = () => (
 );
 
 const TomatSVG = () => (
-  <svg viewBox="0 0 50 55" className="w-14 h-16 md:w-20 md:h-24 drop-shadow-lg pointer-events-none">
+  <svg viewBox="0 0 50 55" className="w-8 h-10 md:w-20 md:h-24 drop-shadow-lg pointer-events-none">
     <path d="M 22 8 Q 20 2 25 0 Q 30 2 28 8" fill="#16A34A" stroke="#000" strokeWidth="1.5" />
     <path d="M 15 10 Q 12 8 18 5 L 25 3 L 32 5 Q 38 8 35 10 Z" fill="#22C55E" stroke="#000" strokeWidth="1.5" />
     <ellipse cx="25" cy="32" rx="20" ry="18" fill="#EF4444" stroke="#000" strokeWidth="2.5" />
@@ -27,7 +27,7 @@ const TomatSVG = () => (
 );
 
 const TerongSVG = () => (
-  <svg viewBox="0 0 40 80" className="w-12 h-24 md:w-16 md:h-32 drop-shadow-lg pointer-events-none">
+  <svg viewBox="0 0 40 80" className="w-7 h-14 md:w-16 md:h-32 drop-shadow-lg pointer-events-none">
     <path d="M 16 12 Q 14 6 20 2 Q 26 6 24 12 Z" fill="#16A34A" stroke="#000" strokeWidth="1.5" />
     <path d="M 14 12 Q 10 30 12 50 Q 14 68 20 75 Q 26 68 28 50 Q 30 30 26 12 Z" fill="#7C3AED" stroke="#000" strokeWidth="2.5" />
     <path d="M 16 20 Q 14 35 15 50" fill="none" stroke="#6D28D9" strokeWidth="1.5" opacity="0.4" />
@@ -36,7 +36,7 @@ const TerongSVG = () => (
 );
 
 const SawiSVG = () => (
-  <svg viewBox="0 0 50 60" className="w-14 h-16 md:w-20 md:h-24 drop-shadow-lg pointer-events-none">
+  <svg viewBox="0 0 50 60" className="w-8 h-10 md:w-20 md:h-24 drop-shadow-lg pointer-events-none">
     <path d="M 25 55 L 23 35 Q 10 30 8 15 Q 12 8 25 20 Z" fill="#4ADE80" stroke="#000" strokeWidth="2" />
     <path d="M 25 55 L 27 35 Q 40 30 42 15 Q 38 8 25 20 Z" fill="#22C55E" stroke="#000" strokeWidth="2" />
     <path d="M 25 55 L 25 25 Q 25 10 25 5 Q 20 15 22 30 Z" fill="#16A34A" stroke="#000" strokeWidth="2" />
@@ -215,12 +215,12 @@ export const HarvestGame: React.FC<HarvestGameProps> = ({ onComplete }) => {
               key={veggie.id}
               onMouseDown={(e) => handleHarvest(veggie.id, e)}
               onTouchStart={(e) => handleHarvest(veggie.id, e)}
-              className="absolute flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 hover:scale-110 active:scale-90 transition-transform duration-100 animate-bounce-subtle"
+              className="absolute w-12 h-16 md:w-20 md:h-28 flex flex-col items-center justify-end transform -translate-x-1/2 -translate-y-1/2 hover:scale-115 active:scale-90 transition-transform duration-100 animate-bounce-subtle cursor-pointer"
               style={{ left: `${veggie.x}%`, top: `${veggie.y}%` }}
             >
               {renderVegetableSVG(veggie.type)}
               {/* Dirt mound for aesthetic */}
-              <svg viewBox="0 0 80 20" className="w-16 h-4 -mt-2 opacity-80 pointer-events-none">
+              <svg viewBox="0 0 80 20" className="w-10 h-3 md:w-16 md:h-4 -mt-1 opacity-80 pointer-events-none flex-shrink-0">
                 <path d="M 5 18 Q 40 0 75 18 Z" fill="#451A03" stroke="#000" strokeWidth="2" />
               </svg>
             </div>
