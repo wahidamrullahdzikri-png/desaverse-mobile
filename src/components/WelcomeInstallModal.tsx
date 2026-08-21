@@ -116,14 +116,16 @@ export const WelcomeInstallModal: React.FC<WelcomeInstallModalProps> = ({ onCont
             )
           )}
 
-          {/* Continue in Browser option */}
-          <button
-            onClick={onContinueToBrowser}
-            className="neo-btn w-full bg-white hover:bg-slate-100 text-slate-800 py-2.5 text-xs font-black flex items-center justify-center gap-2 border border-black transform active:scale-95 transition-transform"
-          >
-            <Globe className="w-4 h-4 text-indigo-500" />
-            Lanjut Lewat Browser HP
-          </button>
+          {/* Android Fallback Helper if deferredPrompt is not captured yet */}
+          {!isIOS && !deferredPrompt && (
+            <div className="bg-blue-50 border border-blue-300 rounded-lg p-2.5 text-left text-[9px] md:text-xs text-blue-900 font-bold leading-tight flex items-start gap-2">
+              <span className="text-lg">💡</span>
+              <div>
+                <strong>Cara Instal di Android:</strong><br />
+                Ketuk tombol **Titik Tiga (︙)** di pojok kanan atas browser, lalu pilih **"Instal aplikasi"** atau **"Tambahkan ke Layar Utama"**.
+              </div>
+            </div>
+          )}
         </div>
 
         <p className="text-[9px] text-slate-500 font-medium leading-none">

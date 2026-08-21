@@ -25,8 +25,16 @@ export default function App() {
 
   const [isPortrait, setIsPortrait] = useState(window.innerHeight > window.innerWidth);
   const [hasChosenBrowser, setHasChosenBrowser] = useState(false);
-
+  const [isStandalone, setIsStandalone] = useState(false);
+ 
   useEffect(() => {
+    const checkStandalone = window.matchMedia('(display-mode: standalone)').matches || 
+                            (window.navigator as any).standalone === true;
+    setIsStandalone(checkStandalone);
+    if (checkStandalone) {
+      setHasChosenBrowser(true);
+    }
+
     const handleResize = () => {
       setIsPortrait(window.innerHeight > window.innerWidth);
     };
@@ -116,8 +124,8 @@ export default function App() {
         <WelcomeInstallModal onContinueToBrowser={() => setHasChosenBrowser(true)} />
       )}
 
-      {/* Orientation Blocker (Only shown if user chose browser option and HP is portrait) */}
-      {hasChosenBrowser && isPortrait && (
+      {/* Orientation Blocker (Only shown if user chose browser option, not standalone PWA, and HP is portrait) */}
+      {hasChosenBrowser && !isStandalone && isPortrait && (
         <div className="fixed inset-0 bg-stone-950 text-white z-[9999] flex flex-col items-center justify-center p-6 text-center animate-fadeIn">
           {/* Animated SVG Phone */}
           <div className="relative w-32 h-32 flex items-center justify-center mb-4">
