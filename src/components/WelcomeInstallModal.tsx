@@ -60,6 +60,8 @@ export const WelcomeInstallModal: React.FC<WelcomeInstallModalProps> = ({ onCont
         onContinueToBrowser();
       }
       setDeferredPrompt(null);
+    } else {
+      alert("Menyiapkan instalasi otomatis... Silakan tunggu 1-2 detik lalu ketuk kembali tombol Instal.");
     }
   };
 
@@ -86,10 +88,10 @@ export const WelcomeInstallModal: React.FC<WelcomeInstallModalProps> = ({ onCont
         <div className="bg-white border-2 border-black rounded-xl p-3 text-left w-full space-y-2">
           <p className="text-xs font-black text-slate-900 flex items-center gap-1.5">
             <Smartphone className="w-4 h-4 text-emerald-600" />
-            Rekomendasi: Install Aplikasi
+            Wajib Install Aplikasi Untuk Bermain
           </p>
           <p className="text-[10px] text-slate-600 font-bold leading-normal">
-            Buka DesaVerse langsung dari layar utama HP kamu dengan layar penuh otomatis, tanpa bar browser, dan berjalan lebih lancar!
+            Buka DesaVerse langsung dari beranda HP kamu dengan layar penuh otomatis, tanpa bar browser, dan berjalan lebih lancar!
           </p>
         </div>
 
@@ -100,31 +102,18 @@ export const WelcomeInstallModal: React.FC<WelcomeInstallModalProps> = ({ onCont
             <div className="bg-yellow-100 border border-yellow-400 rounded-lg p-2.5 text-left text-[9px] md:text-xs text-yellow-900 font-bold leading-tight flex items-start gap-2">
               <span className="text-lg">💡</span>
               <div>
-                <strong>Cara Install di iPhone/iPad:</strong><br />
+                <strong>Cara Install di iPhone/iPad (Wajib):</strong><br />
                 Ketuk tombol <strong>Bagikan</strong> (ikon kotak dengan panah atas), lalu gulir ke bawah dan pilih <strong>"Tambahkan ke Layar Utama"</strong>.
               </div>
             </div>
           ) : (
-            deferredPrompt && (
-              <button
-                onClick={handleInstall}
-                className="neo-btn w-full bg-emerald-500 hover:bg-emerald-400 text-white py-3 text-sm font-black flex items-center justify-center gap-2 transform active:scale-95 transition-transform"
-              >
-                <Download className="w-4 h-4 stroke-[3]" />
-                INSTALL APLIKASI (Direkomendasikan)
-              </button>
-            )
-          )}
-
-          {/* Android Fallback Helper if deferredPrompt is not captured yet */}
-          {!isIOS && !deferredPrompt && (
-            <div className="bg-blue-50 border border-blue-300 rounded-lg p-2.5 text-left text-[9px] md:text-xs text-blue-900 font-bold leading-tight flex items-start gap-2">
-              <span className="text-lg">💡</span>
-              <div>
-                <strong>Cara Instal di Android:</strong><br />
-                Ketuk tombol **Titik Tiga (︙)** di pojok kanan atas browser, lalu pilih **"Instal aplikasi"** atau **"Tambahkan ke Layar Utama"**.
-              </div>
-            </div>
+            <button
+              onClick={handleInstall}
+              className="neo-btn w-full bg-emerald-500 hover:bg-emerald-400 text-white py-3 text-sm font-black flex items-center justify-center gap-2 transform active:scale-95 transition-transform"
+            >
+              <Download className="w-4 h-4 stroke-[3]" />
+              INSTALL APLIKASI DESAVERSE
+            </button>
           )}
         </div>
 
