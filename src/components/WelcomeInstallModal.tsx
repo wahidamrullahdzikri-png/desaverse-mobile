@@ -15,6 +15,7 @@ export const WelcomeInstallModal: React.FC<WelcomeInstallModalProps> = ({ onCont
   const [showModal, setShowModal] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
   const [isInstalling, setIsInstalling] = useState(false);
+  const [showManualGuide, setShowManualGuide] = useState(false);
 
   useEffect(() => {
     // 1. Check if already running in PWA standalone mode
@@ -62,7 +63,7 @@ export const WelcomeInstallModal: React.FC<WelcomeInstallModalProps> = ({ onCont
       }
       setDeferredPrompt(null);
     } else {
-      alert("Menyiapkan instalasi otomatis... Silakan tunggu 1-2 detik lalu ketuk kembali tombol Instal.");
+      setShowManualGuide(true);
     }
   };
 
@@ -137,6 +138,24 @@ export const WelcomeInstallModal: React.FC<WelcomeInstallModalProps> = ({ onCont
               <Download className="w-4 h-4 stroke-[3]" />
               INSTALL APLIKASI DESAVERSE
             </button>
+          )}
+
+          {/* Android Fallback Helper if PWA install fails or opened inside an In-App browser (WhatsApp, Telegram, MIUI scanner) */}
+          {showManualGuide && !isIOS && (
+            <div className="bg-amber-100 border-2 border-amber-500 rounded-xl p-3 text-left w-full space-y-2 animate-fadeIn">
+              <p className="text-[11px] font-black text-amber-800 flex items-center gap-1">
+                <span>⚠️</span> HP Anda membuka via Browser internal Chat / Scanner
+              </p>
+              <div className="text-[9px] text-slate-800 font-bold leading-relaxed space-y-1">
+                <p>Browser internal WhatsApp/Scanner tidak mendukung pemasangan langsung.</p>
+                <p><strong>Cara mengatasinya:</strong></p>
+                <ol className="list-decimal pl-4 space-y-1">
+                  <li>Ketuk tombol <strong>Titik Tiga (︙)</strong> di pojok kanan atas browser ini.</li>
+                  <li>Pilih <strong>"Buka di Chrome"</strong> atau <strong>"Open in Chrome / Browser"</strong>.</li>
+                  <li>Di browser Chrome, ketuk kembali tombol hijau **INSTALL APLIKASI DESAVERSE**!</li>
+                </ol>
+              </div>
+            </div>
           )}
         </div>
 
