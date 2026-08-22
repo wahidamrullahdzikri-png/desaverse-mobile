@@ -1,5 +1,5 @@
 // Minimal Service Worker to satisfy Chrome/iOS PWA criteria
-const CACHE_NAME = 'desaverse-v1';
+const CACHE_NAME = 'desaverse-v2';
 
 self.addEventListener('install', (e) => {
   self.skipWaiting();
